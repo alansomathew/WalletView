@@ -1,4 +1,4 @@
-# myapp
+# Wallet View
 
 A new Flutter project.
 
