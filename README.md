@@ -1,4 +1,4 @@
-# myapp
+# WEallet View
 
 A new Flutter project.
 
