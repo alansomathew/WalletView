@@ -30,6 +30,7 @@ class WTexts {
   static const String newPassword = "New Password";
   static const String username = "Username";
   static const String phoneNo = "Phone Number";
+  static const String upiId = "UPI Id";
   static const String rememberMe = "Remember Me";
   static const String forgetPassword = "Forget Password?";
   static const String signIn = "Sign In";
@@ -70,7 +71,7 @@ class WTexts {
 
   //? searchbox
   static const String searchBoxHint = "Search in Store";
-  static const String popularCategories = "Popular Categories";
+  static const String popularCategories = "Overview";
 
 
 

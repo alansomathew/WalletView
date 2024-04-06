@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import 'package:walletview/features/authentication/screens/password/forget_password.dart';
 import 'package:walletview/features/authentication/screens/signup/signup.dart';
+import 'package:walletview/navigation_menu.dart';
 import 'package:walletview/utils/constants/size.dart';
 import 'package:walletview/utils/constants/text_strings.dart';
 import 'package:walletview/utils/validators/validtion.dart';
-
-
-
-
-
-
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -40,24 +36,22 @@ class LoginForm extends StatelessWidget {
               height: WSizes.spaceBtwInputFields,
             ),
             //* password field
-             TextFormField(
-                // controller: controller.password,
-                validator: (value) =>
-                    WValidator.validateEmptyText("Password", value),
-                // obscureText: controller.hidePassword.value,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Iconsax.password_check),
-                  labelText: WTexts.password,
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                        Iconsax.eye_slash
-                        ),
-                  ),
+            TextFormField(
+              // controller: controller.password,
+              validator: (value) =>
+                  WValidator.validateEmptyText("Password", value),
+              // obscureText: controller.hidePassword.value,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Iconsax.password_check),
+                labelText: WTexts.password,
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Iconsax.eye_slash),
                 ),
-                //* validator:,
               ),
-            
+              //* validator:,
+            ),
+
             const SizedBox(
               height: WSizes.spaceBtwInputFields / 2,
             ),
@@ -68,17 +62,16 @@ class LoginForm extends StatelessWidget {
                 //*/ remember Me
                 Row(
                   children: [
-                     Checkbox(
-                        value: true,
-                        onChanged: (value) => {},
-                      ),
-                    
+                    Checkbox(
+                      value: true,
+                      onChanged: (value) => {},
+                    ),
                     const Text(WTexts.rememberMe),
                   ],
                 ),
                 //* forget Password
                 TextButton(
-                  onPressed: () =>{},
+                  onPressed: () => Get.to(() => const ForgetPassword()),
                   child: const Text(WTexts.forgetPassword),
                 ),
               ],
@@ -90,7 +83,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => {},
+                onPressed: () => Get.to(() => const NavigationMenu()),
                 child: const Text(WTexts.signIn),
               ),
             ),
@@ -102,7 +95,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () => Get.to(()=> const SignupScreen()),
+                onPressed: () => Get.to(() => const SignupScreen()),
                 child: const Text(WTexts.createAccount),
               ),
             ),

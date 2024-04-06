@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'app.dart';
 
@@ -13,6 +14,7 @@ Future<void> main() async {
 // Todo: Init Payment Methods
 
 // Todo: Await Native Splash
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
 // Todo: Initialize Firebase & Authentication Repository
 

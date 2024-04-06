@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:walletview/features/authentication/screens/signup/verify_email.dart';
 
 import 'package:walletview/features/authentication/screens/signup/widgets/terms_and_condition.dart';
 import 'package:walletview/utils/constants/size.dart';
@@ -55,19 +57,19 @@ class SignupForm extends StatelessWidget {
           ),
 
           //* username
-          TextFormField(
-            // controller: controller.username,
-            validator: (value) =>
-                WValidator.validateEmptyText("Username", value),
-            expands: false,
-            decoration: const InputDecoration(
-              labelText: WTexts.username,
-              prefixIcon: Icon(Iconsax.user_edit),
-            ),
-          ),
-          const SizedBox(
-            height: WSizes.spaceBtwInputFields,
-          ),
+          // TextFormField(
+          //   // controller: controller.username,
+          //   validator: (value) =>
+          //       WValidator.validateEmptyText("Username", value),
+          //   expands: false,
+          //   decoration: const InputDecoration(
+          //     labelText: WTexts.username,
+          //     prefixIcon: Icon(Iconsax.user_edit),
+          //   ),
+          // ),
+          // const SizedBox(
+          //   height: WSizes.spaceBtwInputFields,
+          // ),
 
           //* email
           TextFormField(
@@ -91,6 +93,19 @@ class SignupForm extends StatelessWidget {
             decoration: const InputDecoration(
               labelText: WTexts.phoneNo,
               prefixIcon: Icon(Iconsax.call),
+            ),
+          ),
+          const SizedBox(
+            height: WSizes.spaceBtwInputFields,
+          ),
+
+          TextFormField(
+            // controller: controller.phoneNumber,
+            validator: (value) => WValidator.validateEmptyText("UPI Id", value),
+            expands: false,
+            decoration: const InputDecoration(
+              labelText: WTexts.upiId,
+              prefixIcon: Icon(Iconsax.money),
             ),
           ),
           const SizedBox(
@@ -126,7 +141,7 @@ class SignupForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => {},
+              onPressed: () => Get.to(()=> const VerifyEmailScreen()),
               child: const Text(WTexts.createAccount),
             ),
           )

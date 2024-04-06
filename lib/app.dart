@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/features/authentication/screens/login/login.dart';
+import 'package:get/get.dart';
+
+import 'package:walletview/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:walletview/utils/constants/colors.dart';
 import 'package:walletview/utils/constants/text_strings.dart';
 import 'package:walletview/utils/theme/theme.dart';
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: WTexts.appName,
       themeMode: ThemeMode.system,
       theme: WAppTheme.lightTheme,
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       home: const Scaffold(
         backgroundColor: WColors.primary,
         body: Center(
-          child: LoginScreen(
+          child: OnBoardingScreen(
             
           ),
         ),

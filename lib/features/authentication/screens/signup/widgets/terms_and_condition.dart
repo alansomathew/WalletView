@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:walletview/utils/constants/colors.dart';
 import 'package:walletview/utils/constants/size.dart';
@@ -20,13 +19,12 @@ class TemsAndCondition extends StatelessWidget {
         SizedBox(
           width: 24,
           height: 24,
-          child: Obx(
-            () => Checkbox(
-              value: false,
+          child:Checkbox(
+              value: true,
               // value: controller.privacyPolicy.value,
               onChanged: (value) => {},
             ),
-          ),
+         
         ),
         const SizedBox(
           width: WSizes.spaceBtwItems,
