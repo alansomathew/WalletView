@@ -13,7 +13,7 @@ class OverView extends StatelessWidget {
       child: Row(
         children: <Widget>[
           ///LINEAR INDICATOR
-          Expanded(child: Text('aa')),
+          const Expanded(child: Text('aa')),
 
           ///MONTHLY STATS SUMMARY
           Padding(
@@ -31,7 +31,8 @@ class OverView extends StatelessWidget {
                 ),
 
                 ///EXPENSE
-                 Icon(Icons.arrow_drop_down, color: dark?WColors.error:WColors.warning),
+                Icon(Icons.arrow_drop_down,
+                    color: dark ? WColors.error : WColors.warning),
                 Text(
                   '\u{20B9}350',
                   style: TextStyle(
@@ -46,4 +47,3 @@ class OverView extends StatelessWidget {
     );
   }
 }
-

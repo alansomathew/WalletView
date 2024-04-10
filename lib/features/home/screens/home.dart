@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:walletview/common/widget/container/header_component.dart';
-import 'package:walletview/common/widget/container/search_container.dart';
 import 'package:walletview/common/widget/texts/section_heading.dart';
 import 'package:walletview/features/home/screens/widgets/home_appbar.dart';
 import 'package:walletview/features/home/screens/widgets/home_overview.dart';

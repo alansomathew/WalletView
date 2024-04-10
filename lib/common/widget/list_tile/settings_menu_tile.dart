@@ -5,13 +5,13 @@ import 'package:walletview/utils/constants/colors.dart';
 
 class SettingsMenuTile extends StatelessWidget {
   const SettingsMenuTile({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.subTitle,
     this.trailing,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final IconData icon;
   final String title, subTitle;
