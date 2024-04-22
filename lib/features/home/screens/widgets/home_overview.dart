@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:walletview/common/widget/progressbar/slider.dart';
 import 'package:walletview/utils/constants/colors.dart';
 import 'package:walletview/utils/helpers/helper_functions.dart';
 
@@ -13,7 +14,7 @@ class OverView extends StatelessWidget {
       child: Row(
         children: <Widget>[
           ///LINEAR INDICATOR
-          const Expanded(child: Text('aa')),
+          const Expanded(child: ProgressBarSlider(percent: .85,)),
 
           ///MONTHLY STATS SUMMARY
           Padding(
@@ -25,9 +26,7 @@ class OverView extends StatelessWidget {
                     color: dark ? WColors.success : WColors.secondary),
                 Text(
                   '\u{20B9}2500',
-                  style: TextStyle(
-                    color: Colors.blueGrey[300],
-                  ),
+                  style:  Theme.of(context).textTheme.bodyMedium!.apply(color: WColors.white),
                 ),
 
                 ///EXPENSE
@@ -35,9 +34,7 @@ class OverView extends StatelessWidget {
                     color: dark ? WColors.error : WColors.warning),
                 Text(
                   '\u{20B9}350',
-                  style: TextStyle(
-                    color: Colors.blueGrey[300],
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium!.apply(color: WColors.white),
                 ),
               ],
             ),

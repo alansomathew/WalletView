@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:walletview/common/widget/container/header_component.dart';
+import 'package:walletview/common/widget/layout/list_layout.dart';
 import 'package:walletview/common/widget/texts/section_heading.dart';
+import 'package:walletview/common/widget/transactions/history.dart';
 import 'package:walletview/features/home/screens/widgets/home_appbar.dart';
 import 'package:walletview/features/home/screens/widgets/home_overview.dart';
 import 'package:walletview/utils/constants/colors.dart';
@@ -12,12 +14,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             //* Header
-            PrimaryHeaderComponent(
+            const PrimaryHeaderComponent(
               child: Column(
                 children: [
                   //* AppBar
@@ -52,6 +54,27 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(WSizes.defaultSpace),
+              child: Column(
+                children: [
+                 
+                  //* popular products
+                  SectionHeading(
+                    title: WTexts.recentSpents,
+                    onPressed: () => {},
+                  ),
+                  const SizedBox(
+                    height: WSizes.spaceBtwItems,
+                  ),
+                  ListLayout(
+                    itemCount: 4,
+                    itemBuilder: (_, index) => const TransactionHistory(),
+                  ),
+                ],
+              ),
+            ),
+         
           ],
         ),
       ),

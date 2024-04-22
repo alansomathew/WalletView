@@ -63,7 +63,7 @@ class WTexts {
 
 
   //? -- Product
-  static const String popularProducts = "Popular Products";
+  static const String recentSpents = "Recent Spents";
 
   //? -- Home
   static const String homeAppbarTitle = "Good day for shopping";

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/utils/constants/size.dart';
-
-class GridLayout extends StatelessWidget {
-  const GridLayout({
+class ListLayout extends StatelessWidget {
+  const ListLayout({
     super.key,
     required this.itemCount,
     this.mainAxisExtent = 288,
@@ -16,17 +14,11 @@ class GridLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
+    return ListView.builder(
         itemCount: itemCount,
         shrinkWrap: true,
         padding: EdgeInsets.zero,
         physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          mainAxisSpacing: WSizes.gridViewSpacing,
-          // crossAxisSpacing: WSizes.gridViewSpacing,
-          mainAxisExtent: mainAxisExtent,
-        ),
         itemBuilder: itemBuilder);
   }
 }
