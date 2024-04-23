@@ -37,15 +37,15 @@ class NavigationMenu extends StatelessWidget {
             ),
             NavigationDestination(
               icon: Icon(Iconsax.card),
-              label: 'Cards',
+              label: 'Accounts',
             ),
             NavigationDestination(
               icon: Icon(Iconsax.graph),
-              label: 'Graphs',
+              label: 'Analysis',
             ),
             NavigationDestination(
               icon: Icon(Iconsax.share),
-              label: 'Spilt',
+              label: 'Share',
             ),
             
           ],

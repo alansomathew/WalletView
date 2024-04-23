@@ -18,14 +18,15 @@ class ProductPriceText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      
       currencySign + price,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
       style: isLarge
           ? Theme.of(context).textTheme.headlineMedium!.apply(
-              decoration: lineThrough ? TextDecoration.lineThrough : null)
+              decoration: lineThrough ? TextDecoration.lineThrough : TextDecoration.underline)
           : Theme.of(context).textTheme.titleLarge!.apply(
-              decoration: lineThrough ? TextDecoration.lineThrough : null),
+              decoration: lineThrough ? TextDecoration.lineThrough : TextDecoration.underline),
     );
   }
 }

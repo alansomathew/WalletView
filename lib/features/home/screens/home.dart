@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:walletview/common/widget/appbar/appbar.dart';
+import 'package:walletview/common/widget/appbar/drawer.dart';
+import 'package:walletview/common/widget/container/circular_container.dart';
 import 'package:walletview/common/widget/container/header_component.dart';
 import 'package:walletview/common/widget/layout/list_layout.dart';
+import 'package:walletview/common/widget/products/cart_menu_icon.dart';
+import 'package:walletview/common/widget/texts/product_title_text.dart';
 import 'package:walletview/common/widget/texts/section_heading.dart';
 import 'package:walletview/common/widget/transactions/history.dart';
-import 'package:walletview/features/home/screens/widgets/home_appbar.dart';
 import 'package:walletview/features/home/screens/widgets/home_overview.dart';
 import 'package:walletview/utils/constants/colors.dart';
 import 'package:walletview/utils/constants/size.dart';
@@ -14,7 +18,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
+      appBar: TAppBar(),
+      drawer: WDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -23,10 +29,6 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   //* AppBar
-                  HomeAppBar(),
-                  SizedBox(
-                    height: WSizes.spaceBtwSections,
-                  ),
 
                   //* Progress Bar
                   Padding(
@@ -57,8 +59,8 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(WSizes.defaultSpace),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                 
                   //* popular products
                   SectionHeading(
                     title: WTexts.recentSpents,
@@ -67,16 +69,24 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(
                     height: WSizes.spaceBtwItems,
                   ),
+                  const ProductTitleText(
+                    title: 'date',
+                    textAlign: TextAlign.left,
+                  ),
                   ListLayout(
-                    itemCount: 4,
+                    itemCount: 10,
                     itemBuilder: (_, index) => const TransactionHistory(),
                   ),
                 ],
               ),
             ),
-         
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {},
+        child: const Icon(Icons.add),
+        backgroundColor: WColors.primary,
       ),
     );
   }

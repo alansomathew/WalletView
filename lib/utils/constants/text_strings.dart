@@ -66,7 +66,7 @@ class WTexts {
   static const String recentSpents = "Recent Spents";
 
   //? -- Home
-  static const String homeAppbarTitle = "Good day for shopping";
+  static const String homeAppbarTitle = "Welcome";
   static const String homeAppbarSubTitle = "Alanso Mathew";
 
   //? searchbox

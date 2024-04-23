@@ -1,7 +1,6 @@
 import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/size.dart';
 import 'package:walletview/utils/helpers/helper_functions.dart';
 
 class TransactionHistory extends StatelessWidget {
@@ -12,26 +11,26 @@ class TransactionHistory extends StatelessWidget {
     final dark = WHelperFunctions.isDarkMode(context);
     return GestureDetector(
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.only(left: 10, right: 10),
         decoration: BoxDecoration(
-          //     boxShadow:  <BoxShadow> [
-          //   BoxShadow(
-          //     color: Colors.black.withOpacity(0.2),
-          //     blurRadius: 5.0,
-          //     spreadRadius: 2.0,
-          //     offset: Offset(5.0, 0),
-          //   ),
-          // ],
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: dark ? WColors.dark : WColors.light,
+              blurRadius: 5.0,
+              spreadRadius: 2.0,
+              offset: Offset(5.0, 0),
+            ),
+          ],
           color: dark ? WColors.dark : WColors.light,
-          // border: Border(
-          //   bottom: BorderSide(),
-          // ),
+          border: Border(
+            bottom: BorderSide(),
+          ),
         ),
         child: ListTile(
           leading: ClayContainer(
             color: dark ? WColors.dark : WColors.light,
-            width: 40,
-            height: 40,
+            width: 30,
+            height: 30,
             borderRadius: 8,
             child: ShaderMask(
               shaderCallback: (Rect bounds) {
@@ -39,18 +38,18 @@ class TransactionHistory extends StatelessWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      WColors.borderPrimary,
-                      WColors.borderSecondary,
-                      WColors.dark,
-                      WColors.darkerGrey,
-                      WColors.lightContainer,
-                      Color(0xFFB6BAA6),
+                      WColors.shade1,
+                      WColors.shade2,
+                      WColors.shade3,
+                      WColors.shade4,
+                      WColors.shade5,
+                      WColors.shade6,
                     ]).createShader(bounds);
               },
               blendMode: BlendMode.srcATop,
               child: const Icon(
-                Icons.history,
-                color: Colors.blue,
+                Icons.food_bank,
+                color: WColors.accent,
                 size: 30,
               ),
             ),

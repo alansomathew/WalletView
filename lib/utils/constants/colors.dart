@@ -54,4 +54,13 @@ class WColors {
   static const Color softGrey = Color(0xFFF4F4F4);
   static const Color lightGrey = Color(0xFFF9F9F9);
   static const Color white = Color(0xFFFFFFFF);
+
+  // shades
+
+  static const Color shade1 = Color(0xFFB333FA);
+  static const Color shade2 = Color(0xFFA054FE);
+  static const Color shade3 = Color(0xFF768CFC);
+  static const Color shade4 = Color(0xFF5CA6FD);
+  static const Color shade5 = Color(0xFF34CCFD);
+  static const Color shade6 = Color(0xFFB6BAA6);
 }

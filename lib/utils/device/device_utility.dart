@@ -55,6 +55,10 @@ class WDeviceUtils {
     return kToolbarHeight;
   }
 
+  static double getDrawerHeight() {
+    return kToolbarHeight;
+  }
+
   static double getKeyboardHeight() {
     final viewInsets = MediaQuery.of(Get.context!).viewInsets;
     return viewInsets.bottom;
