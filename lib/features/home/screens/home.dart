@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:walletview/common/widget/appbar/appbar.dart';
 import 'package:walletview/common/widget/appbar/drawer.dart';
-import 'package:walletview/common/widget/container/circular_container.dart';
 import 'package:walletview/common/widget/container/header_component.dart';
 import 'package:walletview/common/widget/layout/list_layout.dart';
-import 'package:walletview/common/widget/products/cart_menu_icon.dart';
 import 'package:walletview/common/widget/texts/product_title_text.dart';
 import 'package:walletview/common/widget/texts/section_heading.dart';
 import 'package:walletview/common/widget/transactions/history.dart';
@@ -85,8 +83,8 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
-        child: const Icon(Icons.add),
         backgroundColor: WColors.primary,
+        child: const Icon(Icons.add),
       ),
     );
   }
