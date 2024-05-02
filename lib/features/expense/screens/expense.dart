@@ -33,8 +33,8 @@ class ExpenseScreen extends StatelessWidget {
                       expense: '100',
                       income: '1000',
                       totalBalance: '10000',
-                      cardHolder: 'account.name' ?? '',
-                      bankName: 'account.bankName' ?? '',
+                      cardHolder: 'account.name',
+                      bankName: 'account.bankName',
                       onDelete: () {},
                       onTap: () {},
                     );
