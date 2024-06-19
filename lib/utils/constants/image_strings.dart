@@ -34,4 +34,6 @@ class WImages {
 
   //Profile
   static const String user = "assets/images/content/user.png";
+
+  static const String docerAnimation = "assets/images/animations/141594-animation-of-docer.json";
 }

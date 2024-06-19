@@ -58,6 +58,17 @@ dependencies:
   clay_containers: ^0.3.4
   fl_chart: ^0.67.0
   flutter_svg: ^2.0.10+1
+  connectivity_plus: ^5.0.2
+
+
+  #------------- Firebase Packages -------------#
+  firebase_auth: ^5.1.0
+  firebase_core: ^3.1.0
+  cloud_firestore: ^5.0.1
+  firebase_storage: ^12.0.1
+  image_picker: ^1.1.2
+
+
 
 dev_dependencies:
   flutter_test:

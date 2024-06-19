@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "718706893447",
+    "project_id": "walletview-e4a4b",
+    "storage_bucket": "walletview-e4a4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718706893447:android:7f9b867fa6528466314e22",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC00nGGoncEmKPyAtuRisLa45hft5KfcCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
