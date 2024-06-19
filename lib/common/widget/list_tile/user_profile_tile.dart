@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'package:walletview/common/widget/image/circular_image.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/image_strings.dart';
+import 'package:wallet_view/common/widget/image/circular_image.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/image_strings.dart';
 
 class UserProfileTile extends StatelessWidget {
   const UserProfileTile({

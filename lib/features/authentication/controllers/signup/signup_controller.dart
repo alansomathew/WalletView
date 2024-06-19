@@ -1,16 +1,14 @@
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walletview/data/repositories/authentication/authentication_repository.dart';
-import 'package:walletview/data/repositories/user/user_repository.dart';
-import 'package:walletview/features/authentication/models/user_model.dart';
-import 'package:walletview/features/authentication/screens/signup/verify_email.dart';
-import 'package:walletview/utils/constants/image_strings.dart';
-import 'package:walletview/utils/network/network_manager.dart';
-import 'package:walletview/utils/popups/fullscreen_loader.dart';
-import 'package:walletview/utils/popups/loaders.dart';
-
-
+import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
+import 'package:wallet_view/data/repositories/user/user_repository.dart';
+import 'package:wallet_view/features/authentication/models/user_model.dart';
+import 'package:wallet_view/features/authentication/screens/signup/verify_email.dart';
+import 'package:wallet_view/utils/constants/image_strings.dart';
+import 'package:wallet_view/utils/network/network_manager.dart';
+import 'package:wallet_view/utils/popups/fullscreen_loader.dart';
+import 'package:wallet_view/utils/popups/loaders.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -21,7 +19,7 @@ class SignupController extends GetxController {
   final password = TextEditingController(); //Controller for password input
   final firstName = TextEditingController(); //Controller for first name input
   final lastName = TextEditingController(); //Controller for last name input
-  final username = TextEditingController(); //Controller for username input
+  final upiId = TextEditingController(); //Controller for username input
   final phoneNumber = TextEditingController(); //Controller for phone input
   GlobalKey<FormState> signupFormKey =
       GlobalKey<FormState>(); //Form key for Form validation
@@ -40,15 +38,23 @@ class SignupController extends GetxController {
 
       // Check Internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
+      if (!isConnected) {
+         WFullscreenLoader.stopLoadingDialog();
+        return;
+      }
+      
 
       // Validate Form
 
-      if (!signupFormKey.currentState!.validate()) return;
+      if (!signupFormKey.currentState!.validate()) {
+         WFullscreenLoader.stopLoadingDialog();
+        return;
+      }
 
       // Privacy Policy Check
 
       if (!privacyPolicy.value) {
+        WFullscreenLoader.stopLoadingDialog();
         WLoaders.warningSnackBar(
           title: 'Accept Privacy Policy',
           message:
@@ -69,7 +75,7 @@ class SignupController extends GetxController {
         email: email.text.trim(),
         firstName: firstName.text.trim(),
         lastName: lastName.text.trim(),
-        upiId: username.text.trim(),
+        upiId: upiId.text.trim(),
         phoneNumber: phoneNumber.text.trim(),
         profilePicture: '',
       );
@@ -93,8 +99,11 @@ class SignupController extends GetxController {
     } catch (e) {
       // Remove loader
       WFullscreenLoader.stopLoadingDialog();
+      if (kDebugMode) {
+        print(e);
 
-      // show some Generic Error to the user
+        // show some Generic Error to the user
+      }
       WLoaders.errorSnackBar(title: 'oh Snap!', message: e.toString());
     } 
   }

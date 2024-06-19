@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walletview/features/authentication/screens/login/login.dart';
+import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
+import 'package:wallet_view/features/authentication/controllers/signup/verify_email_controller.dart';
 
-import 'package:walletview/utils/constants/image_strings.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/utils/constants/image_strings.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key, this.email});
@@ -15,7 +16,7 @@ class VerifyEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(VerifyEmailController());
+    final controller = Get.put(VerifyEmailController());
     return Scaffold(
       //? The close icon in the app bar is used to log out the user and redirect them to the login screen
 
@@ -29,7 +30,7 @@ class VerifyEmailScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-              onPressed: () => Get.to(() => const LoginScreen()),
+              onPressed: () => Get.to(() =>AuthenticationRepository.instance.logout()),
               icon: const Icon(CupertinoIcons.clear)),
         ],
       ),
@@ -77,7 +78,7 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => {},
+                  onPressed: () => controller.checkEmailVerificationStatus(),
                   child: const Text(
                     WTexts.tContinue,
                   ),
@@ -89,7 +90,7 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () => {},
+                  onPressed: () => controller.sendEmailVerification(),
                   child: const Text(
                     WTexts.resendEmail,
                   ),

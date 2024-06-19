@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/utils/constants/image_strings.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/utils/constants/image_strings.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({super.key});

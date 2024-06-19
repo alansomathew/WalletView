@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/size.dart';
 
 
 

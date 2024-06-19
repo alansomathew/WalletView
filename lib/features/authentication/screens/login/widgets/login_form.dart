@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'package:walletview/features/authentication/screens/password/forget_password.dart';
-import 'package:walletview/features/authentication/screens/signup/signup.dart';
-import 'package:walletview/navigation_menu.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
-import 'package:walletview/utils/validators/validtion.dart';
+import 'package:wallet_view/features/authentication/screens/password/forget_password.dart';
+import 'package:wallet_view/features/authentication/screens/signup/signup.dart';
+import 'package:wallet_view/navigation_menu.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
+import 'package:wallet_view/utils/validators/validtion.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({

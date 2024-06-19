@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:walletview/common/widget/shimmers/shimmer_effect.dart';
+import 'package:wallet_view/common/widget/shimmers/shimmer_effect.dart';
 import 'package:flutter/material.dart';
 
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 class CircularImage extends StatelessWidget {
   const CircularImage({

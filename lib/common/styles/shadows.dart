@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 class ShadowStyle {
   static final verticalProductShadow = BoxShadow(

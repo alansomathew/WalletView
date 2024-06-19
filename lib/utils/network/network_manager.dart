@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:walletview/utils/popups/loaders.dart';
+import 'package:wallet_view/utils/popups/loaders.dart';
 
 
 //! Manages the network connectivity  status and provides methods to check and handle connectivity changes
@@ -56,5 +56,6 @@ class NetworkManager extends GetxController {
   void onClose() {
     super.onClose();
     _connectivitySubscription.cancel();
+    
   }
 }

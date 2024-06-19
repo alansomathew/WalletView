@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:walletview/common/widget/container/circular_container.dart';
-import 'package:walletview/common/widget/products/cart_menu_icon.dart';
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/common/widget/container/circular_container.dart';
+import 'package:wallet_view/common/widget/products/cart_menu_icon.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
-import 'package:walletview/utils/device/device_utility.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
+import 'package:wallet_view/utils/device/device_utility.dart';
 
 class TAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TAppBar({

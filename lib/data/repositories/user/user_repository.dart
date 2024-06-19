@@ -1,15 +1,15 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:walletview/data/repositories/authentication/authentication_repository.dart';
+import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import 'package:walletview/features/authentication/models/user_model.dart';
-import 'package:walletview/utils/exceptions/firebase_exceptions.dart';
-import 'package:walletview/utils/exceptions/format_exceptions.dart';
-import 'package:walletview/utils/exceptions/platform_exceptions.dart';
+import 'package:wallet_view/features/authentication/models/user_model.dart';
+import 'package:wallet_view/utils/exceptions/firebase_exceptions.dart';
+import 'package:wallet_view/utils/exceptions/format_exceptions.dart';
+import 'package:wallet_view/utils/exceptions/platform_exceptions.dart';
 import 'package:image_picker/image_picker.dart';
 
 //! Repository class for user related operations.

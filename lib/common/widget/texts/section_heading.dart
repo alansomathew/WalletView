@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
 
 
 class SectionHeading extends StatelessWidget {

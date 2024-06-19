@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/common/widget/container/circular_container.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/device/device_utility.dart';
+import 'package:wallet_view/common/widget/container/circular_container.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/device/device_utility.dart';
 
 class WDrawer extends StatelessWidget implements PreferredSizeWidget {
   const WDrawer({super.key});

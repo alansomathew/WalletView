@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 class AccountPageViewDotsIndicator extends StatelessWidget {
   const AccountPageViewDotsIndicator({

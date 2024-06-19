@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walletview/common/styles/spacing_styles.dart';
-import 'package:walletview/common/widget/login_signup/form_divider.dart';
-import 'package:walletview/common/widget/login_signup/social_buttons.dart';
-import 'package:walletview/features/authentication/screens/login/widgets/login_form.dart';
-import 'package:walletview/features/authentication/screens/login/widgets/login_header.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
+import 'package:wallet_view/common/styles/spacing_styles.dart';
+import 'package:wallet_view/common/widget/login_signup/form_divider.dart';
+import 'package:wallet_view/common/widget/login_signup/social_buttons.dart';
+import 'package:wallet_view/features/authentication/screens/login/widgets/login_form.dart';
+import 'package:wallet_view/features/authentication/screens/login/widgets/login_header.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

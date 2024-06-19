@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/size.dart';
 
 
 
@@ -12,15 +12,15 @@ class WCheckboxTheme {
   //* Customizable Light Text Theme
   static CheckboxThemeData lightCheckboxTheme = CheckboxThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(WSizes.xs)),
-    checkColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    checkColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return WColors.white;
       } else {
         return WColors.black;
       }
     }),
-    fillColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    fillColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return WColors.primary;
       } else {
         return Colors.transparent;
@@ -31,15 +31,15 @@ class WCheckboxTheme {
   //* Customizable Dark Text Theme
   static CheckboxThemeData darkCheckboxTheme = CheckboxThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(WSizes.xs)),
-    checkColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    checkColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return WColors.white;
       } else {
         return WColors.black;
       }
     }),
-    fillColor: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    fillColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return WColors.primary;
       } else {
         return Colors.transparent;

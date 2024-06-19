@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walletview/common/widget/loaders/animation_loader.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/common/widget/loaders/animation_loader.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 
 //! A utility class for managing a fullscreen loading dialog

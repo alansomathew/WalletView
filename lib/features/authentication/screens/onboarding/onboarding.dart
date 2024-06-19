@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:walletview/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:walletview/features/authentication/screens/onboarding/widgets/onboarding_navigation.dart';
-import 'package:walletview/features/authentication/screens/onboarding/widgets/onboarding_nextbutton.dart';
-import 'package:walletview/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
-import 'package:walletview/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
-import 'package:walletview/utils/constants/image_strings.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
+import 'package:wallet_view/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:wallet_view/features/authentication/screens/onboarding/widgets/onboarding_navigation.dart';
+import 'package:wallet_view/features/authentication/screens/onboarding/widgets/onboarding_nextbutton.dart';
+import 'package:wallet_view/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
+import 'package:wallet_view/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
+import 'package:wallet_view/utils/constants/image_strings.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});

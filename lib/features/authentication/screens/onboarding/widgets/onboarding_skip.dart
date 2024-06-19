@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/features/authentication/controllers/onboarding/onboarding_controller.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
-import 'package:walletview/utils/device/device_utility.dart';
+import 'package:wallet_view/features/authentication/controllers/onboarding/onboarding_controller.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
+import 'package:wallet_view/utils/device/device_utility.dart';
 
 class OnBoardingSkip extends StatelessWidget {
   const OnBoardingSkip({

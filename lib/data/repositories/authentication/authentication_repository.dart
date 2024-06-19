@@ -1,19 +1,18 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:walletview/data/repositories/user/user_repository.dart';
-import 'package:walletview/features/authentication/screens/login/login.dart';
-import 'package:walletview/features/authentication/screens/onboarding/onboarding.dart';
-import 'package:walletview/features/authentication/screens/signup/verify_email.dart';
-import 'package:walletview/navigation_menu.dart';
-import 'package:walletview/utils/exceptions/firebase_auth_exceptions.dart';
-import 'package:walletview/utils/exceptions/firebase_exceptions.dart';
-import 'package:walletview/utils/exceptions/format_exceptions.dart';
-import 'package:walletview/utils/exceptions/platform_exceptions.dart';
+import 'package:wallet_view/data/repositories/user/user_repository.dart';
+import 'package:wallet_view/features/authentication/screens/login/login.dart';
+import 'package:wallet_view/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:wallet_view/features/authentication/screens/signup/verify_email.dart';
+import 'package:wallet_view/navigation_menu.dart';
+import 'package:wallet_view/utils/exceptions/firebase_auth_exceptions.dart';
+import 'package:wallet_view/utils/exceptions/firebase_exceptions.dart';
+import 'package:wallet_view/utils/exceptions/format_exceptions.dart';
+import 'package:wallet_view/utils/exceptions/platform_exceptions.dart';
 
 
 class AuthenticationRepository extends GetxController {

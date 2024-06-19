@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/common/widget/appbar/appbar.dart';
-import 'package:walletview/common/widget/products/cart_menu_icon.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
+import 'package:wallet_view/common/widget/appbar/appbar.dart';
+import 'package:wallet_view/common/widget/products/cart_menu_icon.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({

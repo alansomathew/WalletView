@@ -1,5 +1,5 @@
 
-import 'package:walletview/common/widget/curved_edges/curved_edges.dart';
+import 'package:wallet_view/common/widget/curved_edges/curved_edges.dart';
 import 'package:flutter/material.dart';
 
 class CurvedEdgeWidget extends StatelessWidget {

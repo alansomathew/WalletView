@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/common/widget/shimmers/shimmer_effect.dart';
-import 'package:walletview/utils/constants/size.dart';
+import 'package:wallet_view/common/widget/shimmers/shimmer_effect.dart';
+import 'package:wallet_view/utils/constants/size.dart';
 
 class CategoryShimmer extends StatelessWidget {
   const CategoryShimmer({

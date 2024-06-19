@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/image_strings.dart';
-import 'package:walletview/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/image_strings.dart';
+import 'package:wallet_view/utils/constants/size.dart';
 
 
 

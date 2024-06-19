@@ -2,7 +2,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 class PieChartGraph extends StatefulWidget {
   const PieChartGraph({super.key});

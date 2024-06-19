@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/common/widget/appbar/appbar.dart';
+import 'package:wallet_view/common/widget/appbar/appbar.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

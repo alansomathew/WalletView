@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:walletview/common/widget/glassmorphism/glassmorphism.dart';
-import 'package:walletview/features/expense/screens/widgets/account_summary.dart';
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/common/widget/glassmorphism/glassmorphism.dart';
+import 'package:wallet_view/features/expense/screens/widgets/account_summary.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 class AccountCard extends StatelessWidget {
   const AccountCard({

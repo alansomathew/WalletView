@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/utils/constants/enums.dart';
+import 'package:wallet_view/utils/constants/enums.dart';
 
 class BrandedTitleText extends StatelessWidget {
   const BrandedTitleText({

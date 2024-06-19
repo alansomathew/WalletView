@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/common/widget/container/circular_container.dart';
-import 'package:walletview/common/widget/curved_edges/curved_edges_widget.dart';
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/common/widget/container/circular_container.dart';
+import 'package:wallet_view/common/widget/curved_edges/curved_edges_widget.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 class PrimaryHeaderComponent extends StatelessWidget {
   const PrimaryHeaderComponent({

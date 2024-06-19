@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({

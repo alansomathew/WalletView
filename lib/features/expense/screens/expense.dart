@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:walletview/common/widget/appbar/appbar.dart';
-import 'package:walletview/common/widget/appbar/drawer.dart';
-import 'package:walletview/common/widget/lava/lava_clock.dart';
-import 'package:walletview/common/widget/layout/list_layout.dart';
-import 'package:walletview/common/widget/transactions/history.dart';
-import 'package:walletview/features/expense/screens/widgets/account_card.dart';
-import 'package:walletview/features/expense/screens/widgets/page_contoller.dart';
-import 'package:walletview/utils/constants/size.dart';
+import 'package:wallet_view/common/widget/appbar/appbar.dart';
+import 'package:wallet_view/common/widget/appbar/drawer.dart';
+import 'package:wallet_view/common/widget/lava/lava_clock.dart';
+import 'package:wallet_view/common/widget/layout/list_layout.dart';
+import 'package:wallet_view/common/widget/transactions/history.dart';
+import 'package:wallet_view/features/expense/screens/widgets/account_card.dart';
+import 'package:wallet_view/features/expense/screens/widgets/page_contoller.dart';
+import 'package:wallet_view/utils/constants/size.dart';
 
 class ExpenseScreen extends StatelessWidget {
   const ExpenseScreen({super.key});

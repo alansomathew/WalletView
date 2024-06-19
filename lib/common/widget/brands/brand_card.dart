@@ -1,11 +1,11 @@
-import 'package:walletview/common/widget/container/rounded_container.dart';
-import 'package:walletview/common/widget/image/circular_image.dart';
-import 'package:walletview/common/widget/texts/brand_title_text_with_verfied_con.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/enums.dart';
-import 'package:walletview/utils/constants/image_strings.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/common/widget/container/rounded_container.dart';
+import 'package:wallet_view/common/widget/image/circular_image.dart';
+import 'package:wallet_view/common/widget/texts/brand_title_text_with_verfied_con.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/enums.dart';
+import 'package:wallet_view/utils/constants/image_strings.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class BrandCard extends StatelessWidget {

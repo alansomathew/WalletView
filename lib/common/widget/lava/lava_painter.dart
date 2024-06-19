@@ -3,7 +3,7 @@ import 'dart:math';
 
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:walletview/common/widget/lava/ball.dart';
+import 'package:wallet_view/common/widget/lava/ball.dart';
 
 // Project imports:
 

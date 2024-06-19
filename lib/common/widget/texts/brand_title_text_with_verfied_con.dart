@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import 'package:walletview/common/widget/texts/baranded_title_text.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/enums.dart';
-import 'package:walletview/utils/constants/size.dart';
+import 'package:wallet_view/common/widget/texts/baranded_title_text.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/enums.dart';
+import 'package:wallet_view/utils/constants/size.dart';
 
 class BrandTitleWithVerifiedIcon extends StatelessWidget {
   const BrandTitleWithVerifiedIcon({

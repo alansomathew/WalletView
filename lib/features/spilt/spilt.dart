@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/common/widget/appbar/appbar.dart';
-import 'package:walletview/common/widget/appbar/drawer.dart';
-import 'package:walletview/common/widget/layout/grid_layout.dart';
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/common/widget/appbar/appbar.dart';
+import 'package:wallet_view/common/widget/appbar/drawer.dart';
+import 'package:wallet_view/common/widget/layout/grid_layout.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 class SpiltScreen extends StatelessWidget {
   const SpiltScreen({super.key});

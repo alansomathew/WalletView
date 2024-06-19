@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/common/widget/appbar/appbar.dart';
-import 'package:walletview/common/widget/appbar/drawer.dart';
-import 'package:walletview/features/expense/screens/widgets/piechart_graph.dart';
-import 'package:walletview/utils/constants/size.dart';
+import 'package:wallet_view/common/widget/appbar/appbar.dart';
+import 'package:wallet_view/common/widget/appbar/drawer.dart';
+import 'package:wallet_view/features/expense/screens/widgets/piechart_graph.dart';
+import 'package:wallet_view/utils/constants/size.dart';
 
 class GraphScreen extends StatelessWidget {
   const GraphScreen({super.key});

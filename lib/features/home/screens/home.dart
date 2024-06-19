@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:walletview/common/widget/appbar/appbar.dart';
-import 'package:walletview/common/widget/appbar/drawer.dart';
-import 'package:walletview/common/widget/container/header_component.dart';
-import 'package:walletview/common/widget/layout/list_layout.dart';
-import 'package:walletview/common/widget/texts/product_title_text.dart';
-import 'package:walletview/common/widget/texts/section_heading.dart';
-import 'package:walletview/common/widget/transactions/history.dart';
-import 'package:walletview/features/home/screens/widgets/home_overview.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
+import 'package:wallet_view/common/widget/appbar/appbar.dart';
+import 'package:wallet_view/common/widget/appbar/drawer.dart';
+import 'package:wallet_view/common/widget/container/header_component.dart';
+import 'package:wallet_view/common/widget/layout/list_layout.dart';
+import 'package:wallet_view/common/widget/texts/product_title_text.dart';
+import 'package:wallet_view/common/widget/texts/section_heading.dart';
+import 'package:wallet_view/common/widget/transactions/history.dart';
+import 'package:wallet_view/features/home/screens/widgets/home_overview.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: TAppBar(),
       drawer: WDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             //* Header
-            const PrimaryHeaderComponent(
+            PrimaryHeaderComponent(
               child: Column(
                 children: [
                   //* AppBar
@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(WSizes.defaultSpace),
+              padding: EdgeInsets.all(WSizes.defaultSpace),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -64,10 +64,10 @@ class HomeScreen extends StatelessWidget {
                     title: WTexts.recentSpents,
                     onPressed: () => {},
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: WSizes.spaceBtwItems,
                   ),
-                  const ProductTitleText(
+                  ProductTitleText(
                     title: 'date',
                     textAlign: TextAlign.left,
                   ),
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
         backgroundColor: WColors.primary,
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     );
   }

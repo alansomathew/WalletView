@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/common/styles/spacing_styles.dart';
-import 'package:walletview/utils/constants/size.dart';
-import 'package:walletview/utils/constants/text_strings.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/common/styles/spacing_styles.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({

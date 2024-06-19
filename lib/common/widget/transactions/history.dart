@@ -1,7 +1,7 @@
 import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 class TransactionHistory extends StatelessWidget {
   const TransactionHistory({super.key});

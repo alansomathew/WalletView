@@ -1,7 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:walletview/common/widget/lava/lava_painter.dart';
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/common/widget/lava/lava_painter.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 // Project imports:
 

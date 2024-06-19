@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:walletview/utils/constants/colors.dart';
-import 'package:walletview/utils/device/device_utility.dart';
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/utils/device/device_utility.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 
 class TTabBar extends StatelessWidget implements PreferredSizeWidget {

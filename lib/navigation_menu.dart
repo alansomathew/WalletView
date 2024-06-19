@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:walletview/features/expense/screens/expense.dart';
-import 'package:walletview/features/expense/screens/graph.dart';
-import 'package:walletview/features/home/screens/home.dart';
-import 'package:walletview/features/spilt/spilt.dart';
-import 'package:walletview/utils/constants/colors.dart';
+import 'package:wallet_view/features/expense/screens/expense.dart';
+import 'package:wallet_view/features/expense/screens/graph.dart';
+import 'package:wallet_view/features/home/screens/home.dart';
+import 'package:wallet_view/features/spilt/spilt.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 
-import 'package:walletview/utils/helpers/helper_functions.dart';
+import 'package:wallet_view/utils/helpers/helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});

@@ -1,6 +1,6 @@
 //* Model class representing user data
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:walletview/utils/formatters/formatter.dart';
+import 'package:wallet_view/utils/formatters/formatter.dart';
 
 class UserModel {
   //? Keep those values final which you do not want to update later
