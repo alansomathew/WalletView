@@ -44,7 +44,7 @@ class VerifyEmailController extends GetxController {
       if (user?.emailVerified ?? false) {
         timer.cancel();
         Get.off(() => SuccessScreen(
-              image: WImages.successfulPaymentIcon,
+              image: WImages.successfullyRegisterAnimation,
               title: WTexts.yourAccountCreatedTitle,
               subTitle: WTexts.yourAccountCreatedSubTitle,
               onPressed: () =>
@@ -60,7 +60,7 @@ class VerifyEmailController extends GetxController {
     final currentUser = _auth.currentUser;
     if (currentUser != null && currentUser.emailVerified) {
       Get.off(() => SuccessScreen(
-            image: WImages.successfulPaymentIcon,
+            image: WImages.successfullyRegisterAnimation,
             title: WTexts.yourAccountCreatedTitle,
             subTitle: WTexts.yourAccountCreatedSubTitle,
             onPressed: () =>
