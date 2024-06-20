@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
@@ -104,6 +105,9 @@ class UserRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
       throw 'something went wrong. Please try again';
     }
   }

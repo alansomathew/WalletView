@@ -9,6 +9,7 @@ import 'package:wallet_view/data/repositories/authentication/authentication_repo
 import 'package:wallet_view/data/repositories/user/user_repository.dart';
 import 'package:wallet_view/features/authentication/models/user_model.dart';
 import 'package:wallet_view/features/authentication/screens/login/login.dart';
+import 'package:wallet_view/features/personalization/screens/profile/widgets/re_authenticate_user_login_form.dart';
 import 'package:wallet_view/utils/constants/image_strings.dart';
 import 'package:wallet_view/utils/constants/size.dart';
 import 'package:wallet_view/utils/network/network_manager.dart';
@@ -131,7 +132,7 @@ class UserController extends GetxController {
           Get.offAll(() => const LoginScreen());
         } else if (provider == 'password') {
           WFullscreenLoader.stopLoadingDialog();
-          // Get.offAll(() => const ReAuthLoginForm());
+          Get.offAll(() => const ReAuthLoginForm());
         }
       }
     } catch (e) {

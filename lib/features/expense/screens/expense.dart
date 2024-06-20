@@ -2,8 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:wallet_view/common/widget/appbar/appbar.dart';
-import 'package:wallet_view/common/widget/appbar/drawer.dart';
+
 import 'package:wallet_view/common/widget/lava/lava_clock.dart';
 import 'package:wallet_view/common/widget/layout/list_layout.dart';
 import 'package:wallet_view/common/widget/transactions/history.dart';
@@ -17,8 +16,7 @@ class ExpenseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TAppBar(),
-      drawer: const WDrawer(),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

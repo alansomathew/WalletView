@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
-import 'package:wallet_view/features/home/controllers/user_controller.dart';
+import 'package:wallet_view/features/personalization/controllers/user_controller.dart';
 import 'package:wallet_view/utils/constants/image_strings.dart';
 import 'package:wallet_view/utils/network/network_manager.dart';
 import 'package:wallet_view/utils/popups/fullscreen_loader.dart';

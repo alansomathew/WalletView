@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:wallet_view/features/personalization/settings.dart';
 
 
 class CardCounterIcon extends StatelessWidget {
@@ -19,7 +17,7 @@ class CardCounterIcon extends StatelessWidget {
     return Stack(
       children: [
         IconButton(
-          onPressed: () => Get.to(() => const SettingsScreen()),
+          onPressed:onPressed,
           icon: Icon(
             Iconsax.user,
             color: iconColor,

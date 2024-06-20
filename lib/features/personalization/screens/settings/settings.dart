@@ -4,8 +4,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:wallet_view/common/widget/appbar/appbar.dart';
 import 'package:wallet_view/common/widget/container/header_component.dart';
 import 'package:wallet_view/common/widget/list_tile/settings_menu_tile.dart';
+import 'package:wallet_view/common/widget/list_tile/user_profile_tile.dart';
 import 'package:wallet_view/common/widget/texts/section_heading.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
+import 'package:wallet_view/features/personalization/screens/profile/profile.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
 import 'package:wallet_view/utils/constants/size.dart';
 
@@ -35,9 +37,9 @@ class SettingsScreen extends StatelessWidget {
                   ),
 
                   //? UserProfile Card
-                  // UserProfileTile(
-                  //   onPressed: () => Get.to(() => const ProfileScreen()),
-                  // ),
+                  UserProfileTile(
+                    onPressed: ()  => Get.to(()=> const ProfileScreen()),
+                  ),
 
                   const SizedBox(
                     height: WSizes.spaceBtwSections,

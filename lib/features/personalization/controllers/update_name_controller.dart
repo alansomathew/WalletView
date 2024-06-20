@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallet_view/data/repositories/user/user_repository.dart';
-import 'package:wallet_view/features/home/controllers/user_controller.dart';
+import 'package:wallet_view/features/personalization/controllers/user_controller.dart';
+import 'package:wallet_view/features/personalization/screens/profile/profile.dart';
 import 'package:wallet_view/utils/constants/image_strings.dart';
 import 'package:wallet_view/utils/network/network_manager.dart';
 import 'package:wallet_view/utils/popups/fullscreen_loader.dart';
@@ -78,7 +79,7 @@ class UpdateNameController extends GetxController {
       WLoaders.successSnackBar(
           title: 'Congratulations', message: 'Your Name has been upddated');
       // Move to previous screen
-      // Get.off(() => const ProfileScreen());
+      Get.off(() => const ProfileScreen());
     } catch (e) {
       // remove loading
       WFullscreenLoader.stopLoadingDialog();

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_view/common/widget/appbar/appbar.dart';
-import 'package:wallet_view/common/widget/appbar/drawer.dart';
+
 import 'package:wallet_view/features/expense/screens/widgets/piechart_graph.dart';
 import 'package:wallet_view/utils/constants/size.dart';
 
@@ -10,8 +9,7 @@ class GraphScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: TAppBar(),
-      drawer: WDrawer(),
+
       body: SingleChildScrollView(
         child: Column(
           children: [

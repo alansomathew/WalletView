@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_view/common/widget/appbar/appbar.dart';
-import 'package:wallet_view/common/widget/appbar/drawer.dart';
+
 import 'package:wallet_view/common/widget/container/header_component.dart';
 import 'package:wallet_view/common/widget/layout/list_layout.dart';
 import 'package:wallet_view/common/widget/texts/product_title_text.dart';
 import 'package:wallet_view/common/widget/texts/section_heading.dart';
 import 'package:wallet_view/common/widget/transactions/history.dart';
+import 'package:wallet_view/features/home/screens/widgets/home_appbar.dart';
 import 'package:wallet_view/features/home/screens/widgets/home_overview.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
 import 'package:wallet_view/utils/constants/size.dart';
@@ -16,18 +16,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: TAppBar(),
-      drawer: WDrawer(),
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             //* Header
-            PrimaryHeaderComponent(
+            const PrimaryHeaderComponent(
               child: Column(
                 children: [
                   //* AppBar
-
+                  HomeAppBar(),
                   //* Progress Bar
                   Padding(
                     padding: EdgeInsets.only(left: WSizes.defaultSpace),
@@ -55,7 +53,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(WSizes.defaultSpace),
+              padding: const EdgeInsets.all(WSizes.defaultSpace),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -64,10 +62,10 @@ class HomeScreen extends StatelessWidget {
                     title: WTexts.recentSpents,
                     onPressed: () => {},
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: WSizes.spaceBtwItems,
                   ),
-                  ProductTitleText(
+                  const ProductTitleText(
                     title: 'date',
                     textAlign: TextAlign.left,
                   ),
@@ -84,7 +82,7 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
         backgroundColor: WColors.primary,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

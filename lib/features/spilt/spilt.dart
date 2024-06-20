@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wallet_view/common/widget/appbar/appbar.dart';
-import 'package:wallet_view/common/widget/appbar/drawer.dart';
+
 import 'package:wallet_view/common/widget/layout/grid_layout.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
 
@@ -10,8 +9,7 @@ class SpiltScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TAppBar(),
-      drawer: const WDrawer(),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
