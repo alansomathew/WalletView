@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:wallet_view/features/authentication/screens/password/reset_password.dart';
+import 'package:wallet_view/features/authentication/controllers/forget_password/forget_password_controller.dart';
 
 import 'package:wallet_view/utils/constants/size.dart';
 import 'package:wallet_view/utils/constants/text_strings.dart';
@@ -12,7 +12,7 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(ForgetPasswordController());
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -41,9 +41,9 @@ class ForgetPassword extends StatelessWidget {
 
               //* Text Fields
               Form(
-                // key: controller.forgetPasswordFormKey,
+                key: controller.forgetPasswordFormKey,
                 child: TextFormField(
-                  // controller: controller.email,
+                  controller: controller.email,
                   validator: WValidator.validateEmail,
                   decoration: const InputDecoration(
                       hintText: WTexts.email,
@@ -58,8 +58,7 @@ class ForgetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() =>
-                        const ResetPassword(email: 'alansomathew10@gmail.com')),
+                    onPressed: () =>controller.sendResetPasswordEmail() ,
                     child: const Text(WTexts.submit)),
               )
             ],

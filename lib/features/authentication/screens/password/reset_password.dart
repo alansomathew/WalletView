@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallet_view/features/authentication/controllers/forget_password/forget_password_controller.dart';
 import 'package:wallet_view/features/authentication/screens/login/login.dart';
 
 import 'package:wallet_view/utils/constants/image_strings.dart';
@@ -73,7 +74,7 @@ class ResetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () => {},
+                  onPressed: () => ForgetPasswordController.instance.resendResetPasswordEmail(email),
                   child: const Text(
                     WTexts.resendEmail,
                   ),
