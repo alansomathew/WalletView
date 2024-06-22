@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:wallet_view/firebase_options.dart';
+
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
-// import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:wallet_view/firebase_options.dart';
 
 import 'app.dart';
 
@@ -21,14 +21,14 @@ Future<void> main() async {
 
 // Todo: Init Payment Methods
 
-// Todo: Await Native Splash
+// Await Native Splash 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-// Todo: Initialize Firebase & Authentication Repository
+// Initialize Firebase & Authentication Repository
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
 
-// Todo: Load all the Material Design / Themes / Localizations / Bindings
+// Load all the Material Design / Themes / Localizations / Bindings
   runApp(const MyApp());
 }

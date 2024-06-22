@@ -7,7 +7,7 @@ class UserModel {
   final String id;
   String firstName;
   String lastName;
-  final String upiId;
+  String upiId;
   final String email;
   String phoneNumber;
   String profilePicture;

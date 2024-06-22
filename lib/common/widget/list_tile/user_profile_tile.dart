@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'package:wallet_view/common/widget/image/circular_image.dart';
+import 'package:wallet_view/common/widget/shimmers/shimmer_effect.dart';
 import 'package:wallet_view/features/personalization/controllers/user_controller.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
 import 'package:wallet_view/utils/constants/image_strings.dart';
@@ -19,8 +20,21 @@ class UserProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return ListTile(
-      leading: const CircularImage(
-          image: WImages.user, width: 50, height: 50, padding: 0),
+      leading: Obx(() {
+        final networkImage = controller.user.value.profilePicture;
+        final image = networkImage.isNotEmpty ? networkImage : WImages.user;
+
+        return controller.imageUploading.value
+            ? const ShimmerEffect(
+                width: 50, height: 50, 
+                radius: 50,
+              )
+            : CircularImage(
+                image: image,
+                width: 50, height: 50, padding: 0,
+                isNetworkImage: networkImage.isNotEmpty,
+              );
+      }),
       title: Text(
         controller.user.value.fullName,
         style: Theme.of(context)

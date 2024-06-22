@@ -1,19 +1,18 @@
-import 'package:wallet_view/common/widget/appbar/appbar.dart';
-import 'package:wallet_view/common/widget/image/circular_image.dart';
-import 'package:wallet_view/common/widget/shimmers/shimmer_effect.dart';
-import 'package:wallet_view/common/widget/texts/section_heading.dart';
-import 'package:wallet_view/features/personalization/screens/profile/widgets/change_name.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-
+import 'package:wallet_view/common/widget/appbar/appbar.dart';
+import 'package:wallet_view/common/widget/image/circular_image.dart';
+import 'package:wallet_view/common/widget/shimmers/shimmer_effect.dart';
+import 'package:wallet_view/common/widget/texts/section_heading.dart';
 import 'package:wallet_view/features/personalization/controllers/user_controller.dart';
+import 'package:wallet_view/features/personalization/screens/profile/widgets/change_name.dart';
+import 'package:wallet_view/features/personalization/screens/profile/widgets/change_phonenumber.dart';
+import 'package:wallet_view/features/personalization/screens/profile/widgets/change_upiid.dart';
 import 'package:wallet_view/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:wallet_view/utils/constants/image_strings.dart';
 import 'package:wallet_view/utils/constants/size.dart';
-
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -80,9 +79,10 @@ class ProfileScreen extends StatelessWidget {
                 value: controller.user.value.fullName,
               ),
               ProfileMenu(
-                onTap: () {},
+                onTap: () => controller.copyEmail(),
                 title: 'Email',
                 value: controller.user.value.email,
+                icon: Iconsax.copy,
               ),
               const SizedBox(height: WSizes.spaceBtwItems),
               const Divider(),
@@ -96,30 +96,20 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: WSizes.spaceBtwItems),
 
               ProfileMenu(
-                onTap: () {},
+                onTap: () => controller.copyUserId(),
                 title: 'UserID',
                 value: controller.user.value.id,
                 icon: Iconsax.copy,
               ),
               ProfileMenu(
-                onTap: () {},
+                onTap:() => Get.to(() => const ChangeUpiId()), // Navigate to ChangeUpiId screen
                 title: 'Upi ID',
                 value: controller.user.value.upiId,
               ),
               ProfileMenu(
-                onTap: () {},
+                onTap:  () => Get.to(() => const ChangePhoneNumber()), // Navigate to ChangePhoneNumber screen
                 title: 'Phone Number',
                 value: controller.user.value.phoneNumber,
-              ),
-              ProfileMenu(
-                onTap: () {},
-                title: 'Gender',
-                value: 'male',
-              ),
-              ProfileMenu(
-                onTap: () {},
-                title: 'Date of Birth',
-                value: '24 Nov 2000',
               ),
               const Divider(),
               const SizedBox(height: WSizes.spaceBtwItems),

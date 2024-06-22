@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:wallet_view/bindings/general_bindings.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
 import 'package:wallet_view/utils/constants/text_strings.dart';

@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +14,6 @@ import 'package:wallet_view/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:wallet_view/utils/exceptions/firebase_exceptions.dart';
 import 'package:wallet_view/utils/exceptions/format_exceptions.dart';
 import 'package:wallet_view/utils/exceptions/platform_exceptions.dart';
-
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -114,6 +112,9 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
       throw 'something went wrong. Please try again';
     }
   }
@@ -235,7 +236,10 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
-      throw 'something went wrong. Please try again';
+      if (kDebugMode) {
+        print(e);
+      }
+      throw 'something went wrong. Please try again $e';
     }
   }
 }

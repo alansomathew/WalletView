@@ -1,8 +1,8 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
 
 import 'package:image_picker/image_picker.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
@@ -61,14 +61,14 @@ class UserController extends GetxController {
           // Convert Name to first and last name
           final nameParts =
               UserModel.nameParts(userCredential.user!.displayName ?? '');
-          
+
           // Map Data
           final user = UserModel(
             id: userCredential.user!.uid,
             firstName: nameParts[0],
             lastName:
                 nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-            upiId:  '',
+            upiId: '',
             email: userCredential.user!.email ?? '',
             phoneNumber: userCredential.user!.phoneNumber ?? '',
             profilePicture: userCredential.user!.photoURL ?? '',
@@ -172,6 +172,9 @@ class UserController extends GetxController {
     } catch (e) {
       // remove loading
       WFullscreenLoader.stopLoadingDialog();
+      if (kDebugMode) {
+        print(e);
+      }
       // show success message
       WLoaders.errorSnackBar(title: 'oh Snap', message: e.toString());
     }
@@ -206,6 +209,30 @@ class UserController extends GetxController {
       WLoaders.errorSnackBar(title: 'oh Snap', message: e.toString());
     } finally {
       imageUploading.value = false;
+    }
+  }
+
+  //* Copy User ID to Clipboard
+  void copyUserId() {
+    try {
+      final userId = user.value.id;
+      Clipboard.setData(ClipboardData(text: userId));
+      WLoaders.successSnackBar(
+          title: 'Copied', message: 'User ID has been copied to clipboard');
+    } catch (e) {
+      WLoaders.errorSnackBar(
+          title: 'Error', message: 'Failed to copy User ID: $e');
+    }
+  }
+
+  //* Copy User email to Clipboard
+  void copyEmail() {
+    try {
+      Clipboard.setData(ClipboardData(text: user.value.email));
+      WLoaders.successSnackBar(
+          title: 'Copied', message: 'Email copied to clipboard');
+    } catch (e) {
+      WLoaders.errorSnackBar(title: 'Error', message: 'Failed to copy email');
     }
   }
 }
