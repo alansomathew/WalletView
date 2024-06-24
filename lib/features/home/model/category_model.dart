@@ -1,51 +1,73 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class CategoryModel {
-  String id;
-  String name;
-  String image;
-  String parentId;
-  bool isFeatured;
+  final String id;
+  final String userId;
+  final String name;
+  final String type;
+  final int iconData;
+  final bool isPrebuilt;
 
   CategoryModel({
     required this.id,
+    required this.userId,
     required this.name,
-    required this.image,
-    required this.isFeatured,
-    this.parentId = '',
+    required this.type,
+    required this.iconData,
+    this.isPrebuilt = false,
   });
 
-  // Empty Helper Function
+  // Method to create a copy with updated fields
+  CategoryModel copyWith({
+    String? id,
+    String? userId,
+    String? name,
+    String? type,
+    int? iconData,
+    bool? isPrebuilt,
+  }) {
+    return CategoryModel(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      name: name ?? this.name,
+      type: type ?? this.type,
+      iconData: iconData ?? this.iconData,
+      isPrebuilt: isPrebuilt ?? this.isPrebuilt,
+    );
+  }
+
+  // Static Function to create an empty category model
   static CategoryModel empty() => CategoryModel(
         id: '',
+        userId: '',
         name: '',
-        image: '',
-        isFeatured: false,
+        type: '',
+        iconData: 0, // default icon
       );
 
-  // Convert Model to json structure so that you can store data in firebase
+  // Convert model to Json Structure for saving in the Firebase Firestore
   Map<String, dynamic> toJson() {
     return {
-      'Name': name,
-      'Image': image,
-      'IsFeatured': isFeatured,
-      'ParentId': parentId,
+      'id': id,
+      'userId': userId,
+      'name': name,
+      'type': type,
+      'isPrebuilt': isPrebuilt,
+      'iconData': iconData, // store icon as integer
     };
   }
 
-  // Map json oriented document snapshot from firebase to UserModel
-  factory CategoryModel.fromSnapshot(
-      DocumentSnapshot<Map<String, dynamic>> document) {
-    if (document.data() != null) {
-      final data = document.data()!;
-
-      // Map JSON Record to the model
+  // Factory method to create a category model from a Firebase DocumentSnapshot
+  factory CategoryModel.fromSnapShot(DocumentSnapshot<Map<String, dynamic>> document) {
+    final data = document.data();
+    if (data != null) {
       return CategoryModel(
         id: document.id,
-        name: data['Name'],
-        image: data['Image'],
-        isFeatured: data['IsFeatured'],
-        parentId: data['ParentId'],
+        userId: data['userId'] ?? '',
+        name: data['name'] ?? '',
+        type: data['type'] ?? '',
+        isPrebuilt: data['isPrebuilt'] ?? false,
+        iconData: data['iconData'] ?? 0,
       );
     } else {
       return CategoryModel.empty();

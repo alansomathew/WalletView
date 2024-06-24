@@ -1,12 +1,12 @@
 
-import 'package:wallet_view/common/widget/appbar/appbar.dart';
-import 'package:wallet_view/features/personalization/controllers/update_name_controller.dart';
-import 'package:wallet_view/utils/constants/size.dart';
-
-import 'package:wallet_view/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'package:wallet_view/common/widget/appbar/appbar.dart';
+import 'package:wallet_view/features/personalization/controllers/update_name_controller.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
 import 'package:wallet_view/utils/validators/validtion.dart';
 
 class ChangeName extends StatelessWidget {

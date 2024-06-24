@@ -1,11 +1,10 @@
-import 'package:wallet_view/utils/constants/size.dart';
-import 'package:wallet_view/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
-
-import 'package:wallet_view/features/personalization/controllers/user_controller.dart';
-
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import 'package:wallet_view/features/personalization/controllers/user_controller.dart';
+import 'package:wallet_view/utils/constants/size.dart';
+import 'package:wallet_view/utils/constants/text_strings.dart';
 import 'package:wallet_view/utils/validators/validtion.dart';
 
 class ReAuthLoginForm extends StatelessWidget {

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+
 import 'package:wallet_view/utils/constants/size.dart';
 
 class ProfileMenu extends StatelessWidget {

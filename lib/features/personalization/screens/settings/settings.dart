@@ -7,6 +7,8 @@ import 'package:wallet_view/common/widget/list_tile/settings_menu_tile.dart';
 import 'package:wallet_view/common/widget/list_tile/user_profile_tile.dart';
 import 'package:wallet_view/common/widget/texts/section_heading.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
+import 'package:wallet_view/features/home/controllers/category/category_controller.dart';
+import 'package:wallet_view/features/personalization/screens/category/category.dart';
 import 'package:wallet_view/features/personalization/screens/profile/profile.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
 import 'package:wallet_view/utils/constants/size.dart';
@@ -16,8 +18,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final catController = Get.put(CategoryController());
     return Scaffold(
-      
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -38,7 +40,7 @@ class SettingsScreen extends StatelessWidget {
 
                   //? UserProfile Card
                   UserProfileTile(
-                    onPressed: ()  => Get.to(()=> const ProfileScreen()),
+                    onPressed: () => Get.to(() => const ProfileScreen()),
                   ),
 
                   const SizedBox(
@@ -86,10 +88,10 @@ class SettingsScreen extends StatelessWidget {
                     onTap: () {},
                   ),
                   SettingsMenuTile(
-                    icon: Iconsax.discount_shape,
-                    title: 'My Coupons',
-                    subTitle: 'List of all the discounted coupons',
-                    onTap: () {},
+                    icon: Iconsax.category,
+                    title: 'My Categories',
+                    subTitle: 'List of all the Categories',
+                    onTap: () => Get.to(() => const CategoryScreen()),
                   ),
                   SettingsMenuTile(
                     icon: Iconsax.notification,
@@ -119,34 +121,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.document_upload,
                     title: 'Upload Data',
                     subTitle: 'Upload data to your cloud firebase',
-                    onTap: () {},
-                  ),
-                  SettingsMenuTile(
-                    icon: Iconsax.location,
-                    title: 'Geolocation',
-                    subTitle: 'Set recommendation based on loacation',
-                    trailing: Switch(
-                      value: true,
-                      onChanged: (value) {},
-                    ),
-                  ),
-                  SettingsMenuTile(
-                    icon: Iconsax.security_user,
-                    title: 'Safe Mode',
-                    subTitle: 'Search result is safe for all ages',
-                    trailing: Switch(
-                      value: false,
-                      onChanged: (value) {},
-                    ),
-                  ),
-                  SettingsMenuTile(
-                    icon: Iconsax.image,
-                    title: 'HD Image Quality',
-                    subTitle: 'Set image quality to be seen',
-                    trailing: Switch(
-                      value: false,
-                      onChanged: (value) {},
-                    ),
+                    onTap: () => catController.uploadPrebuiltCategories(),
                   ),
 
                   //? Logout Button
