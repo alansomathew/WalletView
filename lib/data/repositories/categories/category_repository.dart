@@ -10,7 +10,10 @@ import 'package:wallet_view/utils/exceptions/platform_exceptions.dart';
 class CategoryRepository extends GetxController {
   static CategoryRepository get instance => Get.find();
 
-  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseFirestore _db;
+
+  CategoryRepository({FirebaseFirestore? db})
+      : _db = db ?? FirebaseFirestore.instance;
 
   // Get all categories for a specific user
   Future<List<CategoryModel>> getCategoriesByUser(String userId) async {
@@ -44,25 +47,28 @@ class CategoryRepository extends GetxController {
       if (kDebugMode) {
         print(e);
       }
-      throw 'Something went wrong. Please try again';
+      throw 'Something went wrong. Please try again.';
     }
   }
 
   // Create a new category
   Future<void> createCategory(String userId, CategoryModel category) async {
     try {
-      await _db
+      final docRef = _db
           .collection('categories')
-          .doc('UserDefined')
+          .doc('User-defined')
           .collection(userId)
-          .doc(category.id)
-          .set(category.toJson());
+          .doc();
+
+      category = category.copyWith(id: docRef.id); // Set the document ID
+
+      docRef.set(category.toJson());
     } on FirebaseException catch (e) {
       throw WFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Something went wrong. Please try again.';
     }
   }
 
@@ -71,7 +77,7 @@ class CategoryRepository extends GetxController {
     try {
       await _db
           .collection('categories')
-          .doc('UserDefined')
+          .doc('User-defined')
           .collection(userId)
           .doc(category.id)
           .update(category.toJson());
@@ -80,7 +86,7 @@ class CategoryRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Something went wrong. Please try again.';
     }
   }
 
@@ -89,7 +95,7 @@ class CategoryRepository extends GetxController {
     try {
       await _db
           .collection('categories')
-          .doc('UserDefined')
+          .doc('User-defined')
           .collection(userId)
           .doc(categoryId)
           .delete();
@@ -98,7 +104,7 @@ class CategoryRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong. Please try again';
+      throw 'Something went wrong. Please try again.';
     }
   }
 
@@ -114,26 +120,47 @@ class CategoryRepository extends GetxController {
       DocumentReference docRef = prebuiltCategoriesCollection.doc();
       batch.set(docRef, {
         'name': category['name'],
+        'description': category['description'],
         'type': category['type'],
         'iconData': category['iconData'],
+        'color': category['color'],
         'fontFamily': category['fontFamily'],
         'fontPackage': category['fontPackage'],
-        'isPrebuilt': true,
+        'isDefault': category['isDefault'],
+        'isPrebuilt': category['isPrebuilt'],
+        'budget': category['budget'],
+        'isBudget': category['isBudget'],
       });
     }
 
-    await batch.commit();
+    try {
+      await batch.commit();
+    } on FirebaseException catch (e) {
+      throw WFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw WPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again.';
+    }
   }
 
   // Fetch all prebuilt categories
   Future<List<CategoryModel>> fetchPrebuiltCategories() async {
-    final querySnapshot = await _db
-        .collection('categories')
-        .doc('Prebuilt')
-        .collection('items')
-        .get();
-    return querySnapshot.docs
-        .map((doc) => CategoryModel.fromSnapShot(doc))
-        .toList();
+    try {
+      final querySnapshot = await _db
+          .collection('categories')
+          .doc('Prebuilt')
+          .collection('PrebuiltCategories')
+          .get();
+      return querySnapshot.docs
+          .map((doc) => CategoryModel.fromSnapShot(doc))
+          .toList();
+    } on FirebaseException catch (e) {
+      throw WFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw WPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again.';
+    }
   }
 }

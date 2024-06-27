@@ -7,7 +7,7 @@ import 'package:wallet_view/common/widget/list_tile/settings_menu_tile.dart';
 import 'package:wallet_view/common/widget/list_tile/user_profile_tile.dart';
 import 'package:wallet_view/common/widget/texts/section_heading.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
-import 'package:wallet_view/features/home/controllers/category/category_controller.dart';
+import 'package:wallet_view/features/personalization/controllers/category/category_controller.dart';
 import 'package:wallet_view/features/personalization/screens/category/category.dart';
 import 'package:wallet_view/features/personalization/screens/profile/profile.dart';
 import 'package:wallet_view/utils/constants/colors.dart';

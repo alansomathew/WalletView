@@ -6,7 +6,15 @@ class CategoryModel {
   final String name;
   final String type;
   final int iconData;
+  final int color;
+  final String? fontFamily;
+  final String? fontPackage;
+  final bool isDefault;
   final bool isPrebuilt;
+  final double? budget;
+  final bool isBudget;
+
+  static const int defaultColor = 0xFFFFC107;
 
   CategoryModel({
     required this.id,
@@ -14,17 +22,28 @@ class CategoryModel {
     required this.name,
     required this.type,
     required this.iconData,
+    this.color = defaultColor,
+    this.fontFamily,
+    this.fontPackage,
+    this.isDefault = false,
     this.isPrebuilt = false,
+    this.budget,
+    this.isBudget = false,
   });
 
-  // Method to create a copy with updated fields
   CategoryModel copyWith({
     String? id,
     String? userId,
     String? name,
     String? type,
     int? iconData,
+    int? color,
+    String? fontFamily,
+    String? fontPackage,
+    bool? isDefault,
     bool? isPrebuilt,
+    double? budget,
+    bool? isBudget,
   }) {
     return CategoryModel(
       id: id ?? this.id,
@@ -32,33 +51,44 @@ class CategoryModel {
       name: name ?? this.name,
       type: type ?? this.type,
       iconData: iconData ?? this.iconData,
+      color: color ?? this.color,
+      fontFamily: fontFamily ?? this.fontFamily,
+      fontPackage: fontPackage ?? this.fontPackage,
+      isDefault: isDefault ?? this.isDefault,
       isPrebuilt: isPrebuilt ?? this.isPrebuilt,
+      budget: budget ?? this.budget,
+      isBudget: isBudget ?? this.isBudget,
     );
   }
 
-  // Static Function to create an empty category model
   static CategoryModel empty() => CategoryModel(
         id: '',
         userId: '',
         name: '',
         type: '',
-        iconData: 0, // default icon
+        iconData: 0,
+        color: defaultColor,
       );
 
-  // Convert model to Json Structure for saving in the Firebase Firestore
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'userId': userId,
       'name': name,
       'type': type,
+      'iconData': iconData,
+      'color': color,
+      'fontFamily': fontFamily,
+      'fontPackage': fontPackage,
+      'isDefault': isDefault,
       'isPrebuilt': isPrebuilt,
-      'iconData': iconData, // store icon as integer
+      'budget': budget,
+      'isBudget': isBudget,
     };
   }
 
-  // Factory method to create a category model from a Firebase DocumentSnapshot
-  factory CategoryModel.fromSnapShot(DocumentSnapshot<Map<String, dynamic>> document) {
+  factory CategoryModel.fromSnapShot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data();
     if (data != null) {
       return CategoryModel(
@@ -66,8 +96,14 @@ class CategoryModel {
         userId: data['userId'] ?? '',
         name: data['name'] ?? '',
         type: data['type'] ?? '',
-        isPrebuilt: data['isPrebuilt'] ?? false,
         iconData: data['iconData'] ?? 0,
+        color: data['color'] ?? defaultColor,
+        fontFamily: data['fontFamily'],
+        fontPackage: data['fontPackage'],
+        isDefault: data['isDefault'] ?? false,
+        isPrebuilt: data['isPrebuilt'] ?? false,
+        budget: (data['budget'] as num?)?.toDouble(),
+        isBudget: data['isBudget'] ?? false,
       );
     } else {
       return CategoryModel.empty();

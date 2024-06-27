@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
 import 'package:wallet_view/data/repositories/categories/category_repository.dart';
 import 'package:wallet_view/features/home/model/category_model.dart';
+import 'package:wallet_view/features/personalization/screens/category/category.dart';
 import 'package:wallet_view/utils/constants/image_strings.dart';
 import 'package:wallet_view/utils/network/network_manager.dart';
 import 'package:wallet_view/utils/popups/fullscreen_loader.dart';
@@ -13,8 +16,22 @@ class CategoryController extends GetxController {
 
   final isLoading = false.obs;
   RxList<CategoryModel> categories = <CategoryModel>[].obs;
-  final categoryRepository = Get.put(CategoryRepository());
-  final authRepository = AuthenticationRepository.instance;
+  final CategoryRepository categoryRepository = Get.put(CategoryRepository());
+  final AuthenticationRepository authRepository =
+      AuthenticationRepository.instance;
+  final isAddCategory = true.obs;
+  final isExpenase = true.obs;
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final categoryName = TextEditingController();
+  var selectedIcon = MdiIcons.home.obs;
+
+  var categoryIcon = MdiIcons.home.codePoint.obs;
+
+  // Select an icon by its code point
+  void selectIcon(int iconCodePoint) {
+    categoryIcon.value = iconCodePoint;
+    print(selectedIcon);
+  }
 
   @override
   void onInit() {
@@ -22,13 +39,11 @@ class CategoryController extends GetxController {
     fetchCategories();
   }
 
-  // Fetch all categories for a specific user, including prebuilt categories
   // Fetch all categories for a specific user
   Future<void> fetchCategories() async {
     try {
       isLoading.value = true;
-      final userId =
-          authRepository.authUser?.uid ?? ''; // Replace with actual user ID
+      final userId = authRepository.authUser?.uid ?? '';
       final fetchedCategories =
           await categoryRepository.getCategoriesByUser(userId);
       categories.assignAll(fetchedCategories);
@@ -40,18 +55,45 @@ class CategoryController extends GetxController {
   }
 
   // Create a new user-defined category
-  Future<void> createCategory(CategoryModel category) async {
+  void createCategory() async {
     try {
-      isLoading.value = true;
-      final userId = authRepository.authUser?.uid ?? ''; // Get actual user ID
+      // Start Loading
+      WFullscreenLoader.openLoadingDialog(
+          'We are processing your information', WImages.docerAnimation);
 
-      // Set the userId for the category
-      category = category.copyWith(userId: userId);
+      final isConnected = await NetworkManager.instance.isConnected();
+
+      // Check Internet Connectivity
+      if (!isConnected) {
+        WFullscreenLoader.stopLoadingDialog();
+        return;
+      }
+
+// Validate Form
+      if (!formKey.currentState!.validate()) {
+        WFullscreenLoader.stopLoadingDialog();
+        return;
+      }
+
+      isLoading.value = true;
+      final userId = authRepository.authUser?.uid ?? '';
+
+      CategoryModel category = CategoryModel(
+          userId: userId,
+          name: categoryName.text.trim(),
+          type: isExpenase.value ? 'expense' : 'income',
+          iconData: selectedIcon.value.codePoint,
+          id: '');
 
       await categoryRepository.createCategory(userId, category);
       await fetchCategories();
+      // Remove loader
+      WFullscreenLoader.stopLoadingDialog();
+
       WLoaders.successSnackBar(
           title: 'Success', message: 'Category created successfully');
+
+      Get.to(() => const CategoryScreen());
     } catch (e) {
       WLoaders.errorSnackBar(title: 'Error', message: e.toString());
     } finally {
@@ -63,7 +105,7 @@ class CategoryController extends GetxController {
   Future<void> updateCategory(CategoryModel category) async {
     try {
       isLoading.value = true;
-      final userId = authRepository.authUser?.uid ?? ''; // Get actual user ID
+      final userId = authRepository.authUser?.uid ?? '';
 
       await categoryRepository.updateCategory(userId, category);
       await fetchCategories();
@@ -80,7 +122,7 @@ class CategoryController extends GetxController {
   Future<void> deleteCategory(String categoryId) async {
     try {
       isLoading.value = true;
-      final userId = authRepository.authUser?.uid ?? ''; // Get actual user ID
+      final userId = authRepository.authUser?.uid ?? '';
 
       await categoryRepository.deleteCategory(userId, categoryId);
       await fetchCategories();
@@ -96,11 +138,8 @@ class CategoryController extends GetxController {
   // Upload predefined categories to Firestore
   Future<void> uploadPrebuiltCategories() async {
     try {
-      // Start Loading
-      WFullscreenLoader.openLoadingDialog(
-          'We are vUploading', WImages.docerAnimation);
+      WFullscreenLoader.openLoadingDialog('Uploading', WImages.docerAnimation);
 
-      // Check internet Connectivity
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
         WFullscreenLoader.stopLoadingDialog();
