@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:wallet_view/features/home/model/category_model.dart';
+import 'package:wallet_view/features/personalization/screens/category/widgets/add_category.dart';
 
 /// A widget that displays a single category item.
 ///
@@ -38,7 +40,11 @@ class CategoryItemWidget extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(8),
       onTap: () {
-        // TODO: implement tap handler
+        if (category.isPrebuilt) {
+          return;
+        } else {
+          Get.to(() =>   CategoryPage(category: category));
+        }
       },
       child: ListTile(
         leading: CircleAvatar(
@@ -46,7 +52,7 @@ class CategoryItemWidget extends StatelessWidget {
           child: Icon(
             IconData(
               category.iconData,
-              fontFamily: category.fontFamily,
+              fontFamily: category.fontFamily?? 'MaterialIcons',
               fontPackage: category.fontPackage,
             ),
             color: Color(category.color),

@@ -8,13 +8,11 @@ import 'package:wallet_view/features/personalization/screens/category/widgets/ca
 import 'package:wallet_view/utils/constants/size.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+  const CategoryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final categoryController = Get.put(
-      CategoryController(),
-    );
+    final categoryController = Get.put(CategoryController());
 
     return Scaffold(
       appBar: TAppBar(
@@ -25,20 +23,16 @@ class CategoryScreen extends StatelessWidget {
         showBackArrow: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(
-          left: WSizes.defaultSpace,
-          top: WSizes.defaultSpace,
-          bottom: WSizes.defaultSpace,
-        ),
+        padding: const EdgeInsets.all(WSizes.defaultSpace),
         child: Obx(() {
           if (categoryController.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child:  CircularProgressIndicator());
           }
           if (categoryController.categories.isEmpty) {
             return Center(
               child: Text(
                 'No categories available.',
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             );
           }
@@ -57,7 +51,7 @@ class CategoryScreen extends StatelessWidget {
         }),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(() => CategoryPage()),
+        onPressed: () => Get.to(() => const CategoryPage()),
         child: const Icon(Icons.add),
       ),
     );

@@ -1,20 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:wallet_view/features/home/model/category_model.dart';
 import 'package:wallet_view/features/personalization/controllers/category/category_controller.dart';
+import 'package:wallet_view/features/personalization/screens/category/category.dart';
 import 'package:wallet_view/features/personalization/screens/category/widgets/category_icon_picker.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
 
 class CategoryPage extends StatelessWidget {
-  const CategoryPage({super.key});
+  const CategoryPage({super.key, this.category});
+
+  final CategoryModel? category;
 
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CategoryController());
 
+    // Use addPostFrameCallback to defer state updates until after build completes
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (category != null) {
+        controller.initializeCategoryData(category!);
+        controller.isAddCategory.value = false;
+      } else {
+        controller.clearCategoryData();
+        controller.isAddCategory.value = true;
+      }
+    });
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Category'),
+        title: Obx(() => Text(
+            controller.isAddCategory.value ? 'Add Category' : 'Edit Category')),
         actions: [
           if (!controller.isAddCategory.value)
             IconButton(
@@ -42,10 +58,7 @@ class CategoryPage extends StatelessWidget {
                 ),
               ),
               const CategoryIconPickerWidget(),
-              // CategoryColorWidget(),
               const TransferCategoryWidget(),
-              // SetBudgetWidget(controller: controller.budgetController),
-              // Add more widgets as needed
             ],
           ),
         ),
@@ -55,16 +68,14 @@ class CategoryPage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: ElevatedButton(
             onPressed: () {
-              // Implement save logic here
-              controller.createCategory();
+              controller.createOrUpdateCategory(category);
             },
-            child: const Text('Add'),
+            child: Text(controller.isAddCategory.value ? 'Add' : 'Update'),
           ),
         ),
       ),
     );
   }
-
   void _showDeleteDialog(BuildContext context, CategoryController controller) {
     showDialog(
       context: context,
@@ -78,8 +89,10 @@ class CategoryPage extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
-              controller.deleteCategory;
+              if (category != null) {
+                controller.deleteCategory(category!.id);
+                Get.off(() => const CategoryScreen());
+              }
             },
             child: const Text('Delete', style: TextStyle(color: Colors.red)),
           ),
@@ -99,7 +112,7 @@ class TransferCategoryWidget extends StatelessWidget {
     return Obx(
       () => SwitchListTile(
         secondary: Icon(MdiIcons.swapHorizontal, color: Colors.blue),
-        subtitle: const Text('This is a Expense category'),
+        subtitle: const Text('This is an Expense category'),
         title: const Text('Expense Category'),
         value: controller.isExpenase.value,
         onChanged: (value) {
@@ -133,7 +146,6 @@ class _CategoryNameWidget extends StatelessWidget {
   }
 }
 
-
 class CategoryIconPickerWidget extends StatelessWidget {
   const CategoryIconPickerWidget({Key? key}) : super(key: key);
 
@@ -146,20 +158,19 @@ class CategoryIconPickerWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        title: Text('Select Icon Title'), // Replace with your localized text
-        subtitle: Text('Select Icon SubTitle'), // Replace with your localized text
+        title: Text('Select Icon Title'),
+        subtitle: Text('Select Icon SubTitle'),
         leading: Icon(
-          IconData(
-            controller.selectedIcon.value.codePoint,
-           fontFamily: controller.selectedIcon.value.fontFamily,
-           fontPackage: controller.selectedIcon.value.fontPackage
-          ),
+          IconData(controller.selectedIcon.value.codePoint,
+              fontFamily: controller.selectedIcon.value.fontFamily,
+              fontPackage: controller.selectedIcon.value.fontPackage),
           color: WColors.primary,
         ),
         onTap: () async {
-          final IconData? result = await Get.to(() => const CategoryIconPickerPage());
+          final IconData? result =
+              await Get.to(() => const CategoryIconPickerPage());
           if (result != null) {
-            controller.selectIcon(result.codePoint);
+            controller.selectIcon(result);
           }
         },
       );

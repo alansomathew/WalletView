@@ -24,12 +24,14 @@ class CategoryController extends GetxController {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final categoryName = TextEditingController();
   var selectedIcon = MdiIcons.home.obs;
-
+  final String fontFamilyName = 'MaterialIcons';
+  final String fontFamilyPackageName = 'material_design_icons_flutter';
   var categoryIcon = MdiIcons.home.codePoint.obs;
 
   // Select an icon by its code point
-  void selectIcon(int iconCodePoint) {
-    categoryIcon.value = iconCodePoint;
+  void selectIcon(IconData icon) {
+    categoryIcon.value = icon.codePoint;
+    selectedIcon.value = icon;
     print(selectedIcon);
   }
 
@@ -37,6 +39,19 @@ class CategoryController extends GetxController {
   void onInit() {
     super.onInit();
     fetchCategories();
+  }
+
+  void initializeCategoryData(CategoryModel category) {
+    categoryName.text = category.name;
+    isExpenase.value = category.type == 'expense';
+    selectedIcon.value = IconData(category.iconData,
+        fontFamily: 'MaterialIcons'); // Assuming you use MaterialIcons
+  }
+
+  void clearCategoryData() {
+    categoryName.clear();
+    isExpenase.value = true;
+    selectedIcon.value = MdiIcons.home;
   }
 
   // Fetch all categories for a specific user
@@ -51,6 +66,57 @@ class CategoryController extends GetxController {
       WLoaders.errorSnackBar(title: 'Error', message: e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  // Create or update a user-defined category
+  Future<void> createOrUpdateCategory(CategoryModel? category) async {
+    try {
+      WFullscreenLoader.openLoadingDialog(
+          'We are processing your information', WImages.docerAnimation);
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        WFullscreenLoader.stopLoadingDialog();
+        return;
+      }
+
+      if (!formKey.currentState!.validate()) {
+        WFullscreenLoader.stopLoadingDialog();
+        return;
+      }
+
+      isLoading.value = true;
+      final userId = authRepository.authUser?.uid ?? '';
+
+      final newCategory = CategoryModel(
+        userId: userId,
+        name: categoryName.text.trim(),
+        type: isExpenase.value ? 'expense' : 'income',
+        iconData: selectedIcon.value.codePoint,
+        fontFamily: selectedIcon.value.fontFamily,
+        fontPackage: selectedIcon.value.fontPackage,
+        id: category?.id ?? '',
+      );
+
+      if (category == null) {
+        await categoryRepository.createCategory(userId, newCategory);
+        WLoaders.successSnackBar(
+            title: 'Success', message: 'Category created successfully');
+      } else {
+        await categoryRepository.updateCategory(userId, newCategory);
+        WLoaders.successSnackBar(
+            title: 'Success', message: 'Category updated successfully');
+      }
+
+      await fetchCategories();
+      WFullscreenLoader.stopLoadingDialog();
+      Get.to(() => const CategoryScreen());
+    } catch (e) {
+      WLoaders.errorSnackBar(title: 'Error', message: e.toString());
+    } finally {
+      isLoading.value = false;
+      clearCategoryData(); // Clear the text controllers here
     }
   }
 
@@ -98,6 +164,7 @@ class CategoryController extends GetxController {
       WLoaders.errorSnackBar(title: 'Error', message: e.toString());
     } finally {
       isLoading.value = false;
+      clearCategoryData(); // Clear the text controllers here
     }
   }
 
