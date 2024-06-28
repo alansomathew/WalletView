@@ -22,8 +22,9 @@ class CategoryPage extends StatelessWidget {
         controller.initializeCategoryData(category!);
         controller.isAddCategory.value = false;
       } else {
-        controller.clearCategoryData();
         controller.isAddCategory.value = true;
+
+        controller.clearCategoryData();
       }
     });
 
@@ -32,7 +33,7 @@ class CategoryPage extends StatelessWidget {
         title: Obx(() => Text(
             controller.isAddCategory.value ? 'Add Category' : 'Edit Category')),
         actions: [
-          if (!controller.isAddCategory.value)
+          if (controller.isAddCategory.value)
             IconButton(
               icon: const Icon(Icons.delete_rounded, color: Colors.red),
               onPressed: () => _showDeleteDialog(context, controller),
