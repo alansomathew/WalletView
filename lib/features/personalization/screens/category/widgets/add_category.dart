@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:wallet_view/features/home/model/category_model.dart';
+import 'package:wallet_view/features/personalization/model/category_model.dart';
 import 'package:wallet_view/features/personalization/controllers/category/category_controller.dart';
 import 'package:wallet_view/features/personalization/screens/category/category.dart';
 import 'package:wallet_view/features/personalization/screens/category/widgets/category_icon_picker.dart';
@@ -33,7 +33,7 @@ class CategoryPage extends StatelessWidget {
         title: Obx(() => Text(
             controller.isAddCategory.value ? 'Add Category' : 'Edit Category')),
         actions: [
-          if (controller.isAddCategory.value)
+          if (!controller.isAddCategory.value)
             IconButton(
               icon: const Icon(Icons.delete_rounded, color: Colors.red),
               onPressed: () => _showDeleteDialog(context, controller),
@@ -42,7 +42,7 @@ class CategoryPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Form(
-          key: controller.formKey,
+          key: controller.catehoryFormKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

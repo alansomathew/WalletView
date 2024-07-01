@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
 import 'package:wallet_view/data/repositories/categories/category_repository.dart';
-import 'package:wallet_view/features/home/model/category_model.dart';
+import 'package:wallet_view/features/personalization/model/category_model.dart';
 import 'package:wallet_view/features/personalization/screens/category/category.dart';
 import 'package:wallet_view/utils/constants/image_strings.dart';
 import 'package:wallet_view/utils/network/network_manager.dart';
@@ -21,7 +21,7 @@ class CategoryController extends GetxController {
       AuthenticationRepository.instance;
   final isAddCategory = true.obs;
   final isExpenase = true.obs;
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> catehoryFormKey = GlobalKey<FormState>();
   final categoryName = TextEditingController();
   var selectedIcon = MdiIcons.home.obs;
   final String fontFamilyName = 'MaterialIcons';
@@ -81,7 +81,7 @@ class CategoryController extends GetxController {
         return;
       }
 
-      if (!formKey.currentState!.validate()) {
+      if (!catehoryFormKey.currentState!.validate()) {
         WFullscreenLoader.stopLoadingDialog();
         return;
       }
@@ -136,7 +136,7 @@ class CategoryController extends GetxController {
       }
 
 // Validate Form
-      if (!formKey.currentState!.validate()) {
+      if (!catehoryFormKey.currentState!.validate()) {
         WFullscreenLoader.stopLoadingDialog();
         return;
       }

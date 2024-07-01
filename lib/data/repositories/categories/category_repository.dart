@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:wallet_view/features/home/model/category_model.dart';
+import 'package:wallet_view/features/personalization/model/category_model.dart';
 import 'package:wallet_view/utils/default/prebuilt_categories.dart';
 import 'package:wallet_view/utils/exceptions/firebase_exceptions.dart';
 import 'package:wallet_view/utils/exceptions/platform_exceptions.dart';

@@ -117,12 +117,12 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(
                     height: WSizes.spaceBtwItems,
                   ),
-                  SettingsMenuTile(
-                    icon: Iconsax.document_upload,
-                    title: 'Upload Data',
-                    subTitle: 'Upload data to your cloud firebase',
-                    onTap: () => catController.uploadPrebuiltCategories(),
-                  ),
+                  // SettingsMenuTile(
+                  //   icon: Iconsax.document_upload,
+                  //   title: 'Upload Data',
+                  //   subTitle: 'Upload data to your cloud firebase',
+                  //   onTap: () => catController.uploadPrebuiltCategories(),
+                  // ),
 
                   //? Logout Button
                   const SizedBox(

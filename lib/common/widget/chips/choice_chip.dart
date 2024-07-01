@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 
 class TChoiceChip extends StatelessWidget {
   const TChoiceChip({
-    super.key,
+    Key? key,
     required this.text,
     required this.selected,
     this.onSelected,
-  });
+  }) : super(key: key);
 
   final String text;
   final bool selected;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:wallet_view/features/expense/screens/expense.dart';
+import 'package:wallet_view/features/expense/screens/account_screen.dart';
 import 'package:wallet_view/features/expense/screens/graph.dart';
 import 'package:wallet_view/features/home/screens/home.dart';
 import 'package:wallet_view/features/spilt/spilt.dart';
@@ -61,7 +61,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     const HomeScreen(),
-    const ExpenseScreen(),
+    const AccountScreen(),
     const GraphScreen(),
     const SpiltScreen(),
   ];

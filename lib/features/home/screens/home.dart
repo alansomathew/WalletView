@@ -69,10 +69,10 @@ class HomeScreen extends StatelessWidget {
                     title: 'date',
                     textAlign: TextAlign.left,
                   ),
-                  ListLayout(
-                    itemCount: 10,
-                    itemBuilder: (_, index) => const TransactionHistory(),
-                  ),
+                  // ListLayout(
+                  //   itemCount: 10,
+                  //   itemBuilder: (_, index) => const TransactionHistory(),
+                  // ),
                 ],
               ),
             ),

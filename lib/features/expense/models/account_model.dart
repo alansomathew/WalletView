@@ -4,8 +4,7 @@ class AccountModel {
   //? Keep those values final which you do not want to update later
   final String id;
   final String userId;
-  final String name;
-  final String bank; // e.g., bank, wallet, etc.
+  final String name; // e.g., bank, wallet, etc.
   final String type; // e.g., bank, wallet, etc.
   double balance;
 
@@ -15,7 +14,6 @@ class AccountModel {
     required this.name,
     required this.type,
     required this.balance,
-    required this.bank,
   });
 
   //? Static Function to create an empty user model
@@ -25,7 +23,6 @@ class AccountModel {
         name: '',
         type: '',
         balance: 0.0,
-        bank: '',
       );
 
   //? Convert model to Json Structure for saving in the Firebase Firestore
@@ -36,7 +33,7 @@ class AccountModel {
       'name': name,
       'type': type,
       'balance': balance,
-      'bank': bank
+
     };
   }
 
@@ -51,7 +48,7 @@ class AccountModel {
         name: data['name'],
         type: data['type'],
         balance: data['balance'],
-        bank: data['bank'],
+
       );
     } else {
       return AccountModel.empty();

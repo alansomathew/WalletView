@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'package:wallet_view/features/home/model/category_model.dart';
+import 'package:wallet_view/features/personalization/model/category_model.dart';
 import 'package:wallet_view/features/personalization/screens/category/widgets/add_category.dart';
 
 /// A widget that displays a single category item.

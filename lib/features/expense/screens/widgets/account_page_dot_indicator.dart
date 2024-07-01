@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
 
 class AccountPageViewDotsIndicator extends StatelessWidget {
@@ -38,7 +39,10 @@ class AccountPageViewDotsIndicator extends StatelessWidget {
             onTap: () {
               pageController.jumpToPage(index);
             },
-            child: _indicator(context, accounts[index] == 1),
+            child: Obx(() {
+              final isActive = pageController.page?.round() == index;
+              return _indicator(context, isActive);
+            }),
           );
         }),
       ),

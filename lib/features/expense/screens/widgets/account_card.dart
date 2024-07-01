@@ -9,14 +9,13 @@ class AccountCard extends StatelessWidget {
     super.key,
     required this.totalBalance,
     required this.cardHolder,
-    required this.bankName,
+
     this.onDelete,
     this.onTap,
     required this.income,
     required this.expense,
   });
 
-  final String bankName;
   final String cardHolder;
   final String income, expense;
   final VoidCallback? onDelete;
@@ -58,7 +57,7 @@ class AccountCard extends StatelessWidget {
             children: [
               ListTile(
                 minVerticalPadding: 10,
-                title: Text(bankName),
+                title: Text(cardHolder),
                 subtitle: Text(cardHolder),
                 leading: Icon(
                   Icons.account_balance_outlined,
