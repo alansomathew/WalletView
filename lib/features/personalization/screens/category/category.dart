@@ -8,7 +8,7 @@ import 'package:wallet_view/features/personalization/screens/category/widgets/ca
 import 'package:wallet_view/utils/constants/size.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({Key? key}) : super(key: key);
+  const CategoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -30,7 +30,7 @@ Future<IconData?> paisaIconPicker({
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text(
+          child: const Text(
             'Cancel', // Replace with your localized text
           ),
         ),
@@ -40,7 +40,7 @@ Future<IconData?> paisaIconPicker({
             selectedIcon = controller.selectedIcon.value;
             Navigator.of(context).pop();
           },
-          child: Text(
+          child: const Text(
             'Done', // Replace with your localized text
           ),
         ),

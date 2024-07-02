@@ -30,8 +30,13 @@ class AccountRepository extends GetxController {
   }
 
   // Create a new account
+
   Future<void> createAccount(AccountModel account) async {
     try {
+      // Automatically generate a unique ID for the account
+      String accountId = _db.collection('accounts').doc().id;
+      account = account.copyWith(id: accountId); // Assuming you have a copyWith method in your AccountModel
+
       await _db.collection('accounts').doc(account.id).set(account.toJson());
     } on FirebaseException catch (e) {
       throw WFirebaseException(e.code).message;

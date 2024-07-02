@@ -34,6 +34,8 @@ class AuthenticationRepository extends GetxController {
 
   //* Function to show Relevent Screen
 
+  
+
   screenRedirect() {
     final user = _auth.currentUser;
     if (user != null) {

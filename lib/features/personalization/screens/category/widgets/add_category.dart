@@ -127,7 +127,7 @@ class TransferCategoryWidget extends StatelessWidget {
 class _CategoryNameWidget extends StatelessWidget {
   final CategoryController controller;
 
-  _CategoryNameWidget({required this.controller});
+  const _CategoryNameWidget({required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +148,7 @@ class _CategoryNameWidget extends StatelessWidget {
 }
 
 class CategoryIconPickerWidget extends StatelessWidget {
-  const CategoryIconPickerWidget({Key? key}) : super(key: key);
+  const CategoryIconPickerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -159,8 +159,8 @@ class CategoryIconPickerWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        title: Text('Select Icon Title'),
-        subtitle: Text('Select Icon SubTitle'),
+        title: const Text('Select Icon Title'),
+        subtitle: const Text('Select Icon SubTitle'),
         leading: Icon(
           IconData(controller.selectedIcon.value.codePoint,
               fontFamily: controller.selectedIcon.value.fontFamily,

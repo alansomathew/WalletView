@@ -30,6 +30,7 @@ class UserController extends GetxController {
   final verifyPassword = TextEditingController();
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
 
+  @override
   void onInit() {
     super.onInit();
     fetchUserRecord();

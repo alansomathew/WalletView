@@ -9,14 +9,15 @@ class AccountCard extends StatelessWidget {
     super.key,
     required this.totalBalance,
     required this.cardHolder,
-
     this.onDelete,
     this.onTap,
     required this.income,
     required this.expense,
+    required this.bankName,
   });
 
   final String cardHolder;
+  final String bankName;
   final String income, expense;
   final VoidCallback? onDelete;
   final VoidCallback? onTap;
@@ -57,11 +58,10 @@ class AccountCard extends StatelessWidget {
             children: [
               ListTile(
                 minVerticalPadding: 10,
-                title: Text(cardHolder),
+                title: Text(bankName),
                 subtitle: Text(cardHolder),
                 leading: Icon(
                   Icons.account_balance_outlined,
-                  
                   color: Theme.of(context).textTheme.titleMedium!.color,
                 ),
                 trailing: onDelete != null
@@ -78,7 +78,10 @@ class AccountCard extends StatelessWidget {
                 minVerticalPadding: 10,
                 title: Text(
                   'Total Balance',
-                  style: Theme.of(context).textTheme.bodyMedium!.apply(color:WColors.white),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .apply(color: WColors.white),
                 ),
                 subtitle: Text(
                   totalBalance,

@@ -7,7 +7,7 @@ import 'package:wallet_view/common/widget/list_tile/settings_menu_tile.dart';
 import 'package:wallet_view/common/widget/list_tile/user_profile_tile.dart';
 import 'package:wallet_view/common/widget/texts/section_heading.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
-import 'package:wallet_view/features/personalization/controllers/category/category_controller.dart';
+
 import 'package:wallet_view/features/personalization/screens/category/category.dart';
 import 'package:wallet_view/features/personalization/screens/profile/profile.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
@@ -18,7 +18,6 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final catController = Get.put(CategoryController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -81,12 +80,12 @@ class SettingsScreen extends StatelessWidget {
                   //     title: 'My Orders',
                   //     subTitle: 'In-progress and Completed Orders',
                   //     onTap: () => Get.to(() => const OrderScreen())),
-                  SettingsMenuTile(
-                    icon: Iconsax.bank,
-                    title: 'Bank Account',
-                    subTitle: 'Withdraw balance to registered bank account',
-                    onTap: () {},
-                  ),
+                  // SettingsMenuTile(
+                  //   icon: Iconsax.bank,
+                  //   title: 'Bank Account',
+                  //   subTitle: 'Withdraw balance to registered bank account',
+                  //   onTap: () => Get.to(() => const AccountScreen()),
+                  // ),
                   SettingsMenuTile(
                     icon: Iconsax.category,
                     title: 'My Categories',

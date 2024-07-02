@@ -5,9 +5,9 @@ import 'package:wallet_view/features/personalization/controllers/category/icon_p
 
 class IconPickerWidget extends StatelessWidget {
   IconPickerWidget({
-    Key? key,
+    super.key,
     required this.defaultIcon,
-  }) : super(key: key);
+  });
 
   final IconData defaultIcon;
   final  controller = Get.put(IconPickerController());

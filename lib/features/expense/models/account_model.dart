@@ -33,7 +33,6 @@ class AccountModel {
       'name': name,
       'type': type,
       'balance': balance,
-
     };
   }
 
@@ -48,10 +47,24 @@ class AccountModel {
         name: data['name'],
         type: data['type'],
         balance: data['balance'],
-
       );
     } else {
       return AccountModel.empty();
     }
+  }
+  AccountModel copyWith({
+    String? id,
+    String? userId,
+    String? name,
+    String? type,
+    double? balance,
+  }) {
+    return AccountModel(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      name: name ?? this.name,
+      type: type ?? this.type,
+      balance: balance ?? this.balance,
+    );
   }
 }

@@ -45,6 +45,7 @@ class GlassmorphicFlexContainer extends StatelessWidget {
   /// ),
   /// ```
 
+  @override
   final Key? key;
 
   /// Align the [child] within the container.
@@ -227,6 +228,7 @@ class GlassmorphicContainer extends StatelessWidget {
   /// ),
   /// ```
 
+  @override
   final Key? key;
 
   /// Align the [child] within the container.
@@ -361,8 +363,8 @@ class GlassmorphicContainer extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             borderRadius: BorderRadius.circular(borderRadius),
             child: Container(
-              child: child,
               alignment: alignment,
+              child: child,
             ),
           ),
         ],
@@ -387,15 +389,15 @@ class GlassmorphicBorder extends StatelessWidget {
   final double _radius;
   final width;
   final height;
-  GlassmorphicBorder({
+  GlassmorphicBorder({super.key, 
     required double strokeWidth,
     required double radius,
     required Gradient gradient,
     this.height,
     this.width,
-  })  : this._painter = _GradientPainter(
+  })  : _painter = _GradientPainter(
             strokeWidth: strokeWidth, radius: radius, gradient: gradient),
-        this._radius = radius;
+        _radius = radius;
 
   @override
   Widget build(BuildContext context) {
@@ -422,9 +424,9 @@ class _GradientPainter extends CustomPainter {
       {required double strokeWidth,
       required double radius,
       required Gradient gradient})
-      : this.strokeWidth = strokeWidth,
-        this.radius = radius,
-        this.gradient = gradient;
+      : strokeWidth = strokeWidth,
+        radius = radius,
+        gradient = gradient;
   final Paint paintObject = Paint();
   final Paint paintObject2 = Paint();
 

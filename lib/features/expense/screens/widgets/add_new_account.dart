@@ -3,18 +3,15 @@ import 'package:get/get.dart';
 import 'package:wallet_view/common/widget/chips/choice_chip.dart';
 import 'package:wallet_view/utils/constants/size.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
+import 'package:wallet_view/features/expense/controllers/account_controller.dart';
 
 class AddNewAccountScreen extends StatelessWidget {
-  AddNewAccountScreen({Key? key}) : super(key: key);
+  AddNewAccountScreen({super.key});
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final AccountController accountController = Get.put(AccountController());
 
   @override
   Widget build(BuildContext context) {
-    final RxBool bankSelected = false.obs;
-    final RxBool walletSelected = false.obs;
-    final RxBool creditCardSelected = false.obs;
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add New Account'),
@@ -22,24 +19,28 @@ class AddNewAccountScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(WSizes.defaultSpace),
         child: Form(
-          key: _formKey,
+          key: accountController.formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
+                controller: accountController.nameController,
                 decoration: InputDecoration(
                   labelText: 'Account Name',
                   hintText: 'Enter account name',
-                  prefixIcon: const Icon(Icons.account_balance, color: WColors.primary),
+                  prefixIcon:
+                      const Icon(Icons.account_balance, color: WColors.primary),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                     borderSide: const BorderSide(color: WColors.primary),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: const BorderSide(color: WColors.primary, width: 2),
+                    borderSide:
+                        const BorderSide(color: WColors.primary, width: 2),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -54,34 +55,34 @@ class AddNewAccountScreen extends StatelessWidget {
                 children: [
                   Obx(() => TChoiceChip(
                         text: 'Bank',
-                        selected: bankSelected.value,
+                        selected: accountController.bankSelected.value,
                         onSelected: (selected) {
-                          bankSelected.value = selected;
+                          accountController.bankSelected.value = selected;
                           if (selected) {
-                            walletSelected.value = false;
-                            creditCardSelected.value = false;
+                            accountController.walletSelected.value = false;
+                            accountController.creditCardSelected.value = false;
                           }
                         },
                       )),
                   Obx(() => TChoiceChip(
                         text: 'Wallet',
-                        selected: walletSelected.value,
+                        selected: accountController.walletSelected.value,
                         onSelected: (selected) {
-                          walletSelected.value = selected;
+                          accountController.walletSelected.value = selected;
                           if (selected) {
-                            bankSelected.value = false;
-                            creditCardSelected.value = false;
+                            accountController.bankSelected.value = false;
+                            accountController.creditCardSelected.value = false;
                           }
                         },
                       )),
                   Obx(() => TChoiceChip(
                         text: 'Credit Card',
-                        selected: creditCardSelected.value,
+                        selected: accountController.creditCardSelected.value,
                         onSelected: (selected) {
-                          creditCardSelected.value = selected;
+                          accountController.creditCardSelected.value = selected;
                           if (selected) {
-                            bankSelected.value = false;
-                            walletSelected.value = false;
+                            accountController.bankSelected.value = false;
+                            accountController.walletSelected.value = false;
                           }
                         },
                       )),
@@ -89,6 +90,7 @@ class AddNewAccountScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                controller: accountController.initialBalanceController,
                 decoration: InputDecoration(
                   labelText: 'Initial Balance',
                   hintText: 'Enter initial balance',
@@ -99,9 +101,11 @@ class AddNewAccountScreen extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
-                    borderSide: const BorderSide(color: WColors.primary, width: 2),
+                    borderSide:
+                        const BorderSide(color: WColors.primary, width: 2),
                   ),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -118,10 +122,8 @@ class AddNewAccountScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState?.validate() == true) {
-                      // Logic to save account details
-                    }
+                  onPressed: () async {
+                    await accountController.createAccount();
                   },
                   child: const Text('Save Account'),
                 ),

@@ -5,7 +5,7 @@ import 'package:wallet_view/features/personalization/controllers/category/icon_p
 
 
 class CategoryIconPickerPage extends StatelessWidget {
-  const CategoryIconPickerPage({Key? key});
+  const CategoryIconPickerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class CategoryIconPickerPage extends StatelessWidget {
           },
           icon: const Icon(Icons.close),
         ),
-        title: Text('Choose Icon'), // Replace with your localized text
-        actions: [
+        title: const Text('Choose Icon'), // Replace with your localized text
+        actions: const [
           // TextButton(
           //   onPressed: () async {
           //     final resultIcon = await paisaIconPicker(
@@ -43,7 +43,7 @@ class CategoryIconPickerPage extends StatelessWidget {
             onPressed: () {
               Get.back(result: iconController.selectedIcon.value);
             },
-            child: Text('Done'), // Replace with your localized text
+            child: const Text('Done'), // Replace with your localized text
           ),
         ),
       ),
@@ -53,9 +53,7 @@ class CategoryIconPickerPage extends StatelessWidget {
         itemBuilder: (context, index) {
           final iconData = map[index];
           return Obx(() {
-            final isSelected = iconController.selectedIcon.value ==
-                iconData
-                    .value[0]; // Assuming the first element is the selected one
+            
             return Card(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

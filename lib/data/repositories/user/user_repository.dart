@@ -58,6 +58,26 @@ class UserRepository extends GetxController {
     }
   }
 
+  //* Function to fetch user details based on a given User ID
+  Future<UserModel?> getUserById(String userId) async {
+    try {
+      final documentSnapshot = await _db.collection('users').doc(userId).get();
+      if (documentSnapshot.exists) {
+        return UserModel.fromSnapShot(documentSnapshot);
+      } else {
+        return null;
+      }
+    } on FirebaseException catch (e) {
+      throw WFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const WFormatException();
+    } on PlatformException catch (e) {
+      throw WPlatformException(e.code).message;
+    } catch (e) {
+      throw 'something went wrong. Please try again';
+    }
+  }
+
   //* Function to update user data in Firestore
   Future<void> updateUserDetails(UserModel updateUser) async {
     try {
