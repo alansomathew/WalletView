@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TransactionModel {
   final String id;
+  final String name;
   final String userId;
   final String accountId;
   final String categoryId;
@@ -12,6 +13,7 @@ class TransactionModel {
 
   TransactionModel({
     required this.id,
+    required this.name,
     required this.userId,
     required this.accountId,
     required this.categoryId,
@@ -24,6 +26,7 @@ class TransactionModel {
   // Static Function to create an empty transaction model
   static TransactionModel empty() => TransactionModel(
         id: '',
+        name: '',
         userId: '',
         accountId: '',
         categoryId: '',
@@ -37,6 +40,7 @@ class TransactionModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'name': name,
       'userId': userId,
       'accountId': accountId,
       'categoryId': categoryId,
@@ -48,7 +52,8 @@ class TransactionModel {
   }
 
   // Factory method to create a transaction model from a Firebase DocumentSnapshot
-  factory TransactionModel.fromSnapShot(DocumentSnapshot<Map<String, dynamic>> document) {
+  factory TransactionModel.fromSnapShot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
     if (document.data() != null) {
       final data = document.data()!;
       return TransactionModel(
@@ -60,6 +65,7 @@ class TransactionModel {
         amount: data['amount'],
         date: data['date'],
         type: data['type'],
+        name: data['name'],
       );
     } else {
       return TransactionModel.empty();

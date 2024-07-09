@@ -148,4 +148,15 @@ class AccountController extends GetxController {
       isLoading.value = false;
     }
   }
+   Future<void> updateAccountBalance(String accountId, double newBalance) async {
+    try {
+      isLoading.value = true;
+      await accountRepository.updateAccountBalance(accountId, newBalance);
+      await fetchAccounts();
+    } catch (e) {
+      // Handle error
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }

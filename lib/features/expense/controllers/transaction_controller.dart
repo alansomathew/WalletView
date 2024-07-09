@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
-
 import 'package:wallet_view/data/repositories/transaction/transaction_repository.dart';
+import 'package:wallet_view/features/expense/controllers/account_controller.dart';
 import 'package:wallet_view/features/expense/models/transaction_model.dart';
 import 'package:wallet_view/utils/popups/loaders.dart';
 
@@ -12,6 +12,16 @@ class TransactionController extends GetxController {
   RxList<TransactionModel> transactions = <TransactionModel>[].obs;
   final transactionRepository = Get.put(TransactionRepository());
   final authRepository = Get.put(AuthenticationRepository());
+  final selectedAccountId = ''.obs;
+   var selectedCategoryId = RxString('');
+  var selectedType = 'expense'.obs;
+  var transactionAmount = 0.0.obs; // Transaction amount state
+  var selectedDate = DateTime.now().obs; // Selected date and time
+  var currentDescription = ''.obs; // Description
+    var currentTransactionName = ''.obs; // Transaction name
+
+  // Method to get the current user ID
+  String get userId => authRepository.authUser!.uid;
 
   @override
   void onInit() {
@@ -19,11 +29,9 @@ class TransactionController extends GetxController {
     fetchTransactions();
   }
 
-  // Fetch all transactions for a specific user
   Future<void> fetchTransactions() async {
     try {
       isLoading.value = true;
-      final userId = authRepository.authUser?.uid?? ''; // Replace with actual user ID
       final fetchedTransactions =
           await transactionRepository.getTransactionsByUser(userId);
       transactions.assignAll(fetchedTransactions);
@@ -34,11 +42,19 @@ class TransactionController extends GetxController {
     }
   }
 
-  // Create a new transaction
   Future<void> createTransaction(TransactionModel transaction) async {
     try {
       isLoading.value = true;
       await transactionRepository.createTransaction(transaction);
+
+      final accountController = Get.find<AccountController>();
+      final account = accountController.accounts
+          .firstWhere((acc) => acc.id == transaction.accountId);
+
+      final updatedBalance = account.balance - transaction.amount;
+      await accountController.updateAccountBalance(
+          transaction.accountId, updatedBalance);
+
       await fetchTransactions();
       WLoaders.successSnackBar(
           title: 'Success', message: 'Transaction created successfully');
@@ -49,7 +65,6 @@ class TransactionController extends GetxController {
     }
   }
 
-  // Update an existing transaction
   Future<void> updateTransaction(TransactionModel transaction) async {
     try {
       isLoading.value = true;
@@ -64,7 +79,6 @@ class TransactionController extends GetxController {
     }
   }
 
-  // Delete a transaction
   Future<void> deleteTransaction(String transactionId) async {
     try {
       isLoading.value = true;
@@ -78,4 +92,32 @@ class TransactionController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  void setSelectedAccountId(String accountId) {
+    selectedAccountId.value = accountId;
+  }
+
+  void setSelectedCategoryId(String categoryId) {
+    selectedCategoryId.value = categoryId;
+  }
+
+  void setSelectedType(String type) {
+    selectedType.value = type;
+  }
+
+  void setTransactionAmount(double amount) {
+    transactionAmount.value = amount;
+  }
+
+  void setSelectedDate(DateTime date) {
+    selectedDate.value = date;
+  }
+
+  void setCurrentDescription(String description) {
+    currentDescription.value = description;
+  }
+   void setCurrentTransactionName(String name) {
+    currentTransactionName.value = name;
+  }
+  
 }

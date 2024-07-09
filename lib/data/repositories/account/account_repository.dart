@@ -15,10 +15,12 @@ class AccountRepository extends GetxController {
   // Get all accounts for a specific user
   Future<List<AccountModel>> getAccountsByUser(String userId) async {
     try {
-      final snapshot = await _db.collection('accounts')
+      final snapshot = await _db
+          .collection('accounts')
           .where('userId', isEqualTo: userId)
           .get();
-      final accounts = snapshot.docs.map((doc) => AccountModel.fromSnapShot(doc)).toList();
+      final accounts =
+          snapshot.docs.map((doc) => AccountModel.fromSnapShot(doc)).toList();
       return accounts;
     } on FirebaseException catch (e) {
       throw WFirebaseException(e.code).message;
@@ -35,7 +37,8 @@ class AccountRepository extends GetxController {
     try {
       // Automatically generate a unique ID for the account
       String accountId = _db.collection('accounts').doc().id;
-      account = account.copyWith(id: accountId); // Assuming you have a copyWith method in your AccountModel
+      account = account.copyWith(
+          id: accountId); // Assuming you have a copyWith method in your AccountModel
 
       await _db.collection('accounts').doc(account.id).set(account.toJson());
     } on FirebaseException catch (e) {
@@ -64,6 +67,21 @@ class AccountRepository extends GetxController {
   Future<void> deleteAccount(String accountId) async {
     try {
       await _db.collection('accounts').doc(accountId).delete();
+    } on FirebaseException catch (e) {
+      throw WFirebaseException(e.code).message;
+    } on PlatformException catch (e) {
+      throw WPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> updateAccountBalance(String accountId, double newBalance) async {
+    try {
+      await _db
+          .collection('accounts')
+          .doc(accountId)
+          .update({'balance': newBalance});
     } on FirebaseException catch (e) {
       throw WFirebaseException(e.code).message;
     } on PlatformException catch (e) {
