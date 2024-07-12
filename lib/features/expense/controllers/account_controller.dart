@@ -33,6 +33,7 @@ class AccountController extends GetxController {
   final RxBool creditCardSelected = false.obs;
   final pageController = PageController();
   Rx<int> currentPageIndex = 0.obs;
+    var selectedAccountId = ''.obs;
 
   //* update current index wwhen page scrolls
   void updatePageIndicator(index) => currentPageIndex.value = index;
@@ -158,5 +159,8 @@ class AccountController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+   void selectAccount( accountId) {
+    selectedAccountId.value = accountId;
   }
 }

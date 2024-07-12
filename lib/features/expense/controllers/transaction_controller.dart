@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:wallet_view/data/repositories/authentication/authentication_repository.dart';
 import 'package:wallet_view/data/repositories/transaction/transaction_repository.dart';
 import 'package:wallet_view/features/expense/controllers/account_controller.dart';
+import 'package:wallet_view/features/expense/models/account_model.dart';
 import 'package:wallet_view/features/expense/models/transaction_model.dart';
 import 'package:wallet_view/utils/popups/loaders.dart';
 
@@ -13,12 +14,15 @@ class TransactionController extends GetxController {
   final transactionRepository = Get.put(TransactionRepository());
   final authRepository = Get.put(AuthenticationRepository());
   final selectedAccountId = ''.obs;
-   var selectedCategoryId = RxString('');
+  var selectedCategoryId = RxString('');
   var selectedType = 'expense'.obs;
   var transactionAmount = 0.0.obs; // Transaction amount state
   var selectedDate = DateTime.now().obs; // Selected date and time
   var currentDescription = ''.obs; // Description
-    var currentTransactionName = ''.obs; // Transaction name
+  var currentTransactionName = ''.obs; // Transaction name
+  var fromAccount = Rxn<AccountModel>();
+  var toAccount = Rxn<AccountModel>();
+  var selectedaAccountId = ''.obs;
 
   // Method to get the current user ID
   String get userId => authRepository.authUser!.uid;
@@ -116,8 +120,22 @@ class TransactionController extends GetxController {
   void setCurrentDescription(String description) {
     currentDescription.value = description;
   }
-   void setCurrentTransactionName(String name) {
+
+  void setCurrentTransactionName(String name) {
     currentTransactionName.value = name;
   }
-  
+
+  void setFromAccount(AccountModel account) {
+    fromAccount.value = account;
+    if (toAccount.value?.id == account.id) {
+      toAccount.value = null;
+    }
+  }
+
+  void setToAccount(AccountModel account) {
+    toAccount.value = account;
+    if (fromAccount.value?.id == account.id) {
+      fromAccount.value = null;
+    }
+  }
 }

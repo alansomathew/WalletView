@@ -6,6 +6,7 @@ import 'package:wallet_view/features/expense/controllers/account_controller.dart
 import 'package:wallet_view/features/expense/controllers/transaction_controller.dart';
 import 'package:wallet_view/features/expense/models/account_model.dart';
 import 'package:wallet_view/features/home/screens/transactions/widgets/selectable_item_widget.dart';
+import 'package:wallet_view/utils/constants/colors.dart';
 
 class SelectedAccountWidget extends StatelessWidget {
   const SelectedAccountWidget({Key? key}) : super(key: key);
@@ -104,7 +105,7 @@ class AccountSelectedItem extends StatelessWidget {
             final userName = user?.fullName ?? 'Unknown User';
             return Obx(
              ()=> ItemWidget(
-                color: Theme.of(context).secondaryHeaderColor,
+                color: WColors.info,
                 selected:
                     account.id == transactionController.selectedAccountId.value,
                 title: account.name,
