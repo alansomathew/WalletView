@@ -114,9 +114,9 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+      
+        debugPrint(e.toString());
+      
       throw 'something went wrong. Please try again';
     }
   }
@@ -185,14 +185,14 @@ class AuthenticationRepository extends GetxController {
     } on FormatException catch (_) {
       throw const WFormatException();
     } on PlatformException catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+  
+        debugPrint(e.toString());
+      
       throw WPlatformException(e.code).message;
     } catch (e) {
-      if (kDebugMode) {
-        print('something went wrong: $e');
-      }
+     
+        debugPrint('something went wrong: $e');
+      
       // throw 'something went wrong. Please try again';
       return null;
     }
@@ -238,9 +238,9 @@ class AuthenticationRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+    
+        debugPrint(e.toString());
+    
       throw 'something went wrong. Please try again $e';
     }
   }

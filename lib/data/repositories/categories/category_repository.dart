@@ -44,9 +44,9 @@ class CategoryRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+     
+        debugPrint(e.toString());
+     
       throw 'Something went wrong. Please try again.';
     }
   }

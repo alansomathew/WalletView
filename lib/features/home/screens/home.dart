@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:wallet_view/common/widget/container/header_component.dart';
-import 'package:wallet_view/common/widget/texts/product_title_text.dart';
 import 'package:wallet_view/common/widget/texts/section_heading.dart';
+import 'package:wallet_view/common/widget/transactions/history.dart';
+import 'package:wallet_view/features/expense/controllers/transaction_controller.dart';
 import 'package:wallet_view/features/home/screens/transactions/add_transactions.dart';
+import 'package:wallet_view/features/home/screens/transactions/all_transactions_screen.dart';
 import 'package:wallet_view/features/home/screens/widgets/home_appbar.dart';
 import 'package:wallet_view/features/home/screens/widgets/home_overview.dart';
 import 'package:wallet_view/utils/constants/colors.dart';
@@ -16,6 +18,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final transactionController = Get.put(TransactionController());
+    final dark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -40,8 +45,7 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(
                           height: WSizes.spaceBtwItems,
                         ),
-
-                        // //* Categories
+                        //* Categories
                         OverView(),
                       ],
                     ),
@@ -57,22 +61,49 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  //* popular products
+                  //* Recent Transactions
                   SectionHeading(
                     title: WTexts.recentSpents,
-                    onPressed: () => {},
+                    onPressed: () => Get.to(() =>
+                        AllTransactionsScreen()), // Navigate to the new screen
                   ),
                   const SizedBox(
                     height: WSizes.spaceBtwItems,
                   ),
-                  const ProductTitleText(
-                    title: 'date',
-                    textAlign: TextAlign.left,
-                  ),
-                  // ListLayout(
-                  //   itemCount: 10,
-                  //   itemBuilder: (_, index) => const TransactionHistory(),
-                  // ),
+                  Obx(() {
+                    if (transactionController.transactions.isEmpty) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else {
+                      // Limit to top 20 transactions
+                      final topTransactions =
+                          transactionController.transactions.take(20).toList();
+
+                      return ListView.separated(
+                        separatorBuilder: (context, index) => Divider(
+                          height: 5,
+                          color: dark ? WColors.light : WColors.dark,
+                        ),
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: topTransactions.length,
+                        itemBuilder: (context, index) {
+                          final transaction = topTransactions[index];
+                          final category = transactionController
+                              .getCategoryById(transaction.categoryId);
+                          return TransactionHistory(
+                            title: transaction.description,
+                            subtitle: category?.name ?? 'Unknown',
+                            amount: transaction.amount,
+                            dateString: transaction.date,
+                            type: transaction.type,
+                            iconCodePoint: category?.iconData ?? 0,
+                            fontFamily: category?.fontFamily,
+                            fontPackage: category?.fontPackage,
+                          );
+                        },
+                      );
+                    }
+                  }),
                 ],
               ),
             ),
@@ -80,7 +111,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(()=>AddTransactionScreen()),
+        onPressed: () => Get.to(() => AddTransactionScreen()),
         backgroundColor: WColors.primary,
         child: const Icon(Icons.add),
       ),

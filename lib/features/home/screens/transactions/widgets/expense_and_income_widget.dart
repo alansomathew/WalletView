@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:wallet_view/features/home/screens/transactions/widgets/select_account_widget.dart';
 import 'package:wallet_view/features/home/screens/transactions/widgets/select_category_widget.dart';
 import 'package:wallet_view/features/home/screens/transactions/widgets/transaction_amount_widget.dart';
@@ -10,11 +9,11 @@ import 'package:wallet_view/utils/paisa_widgets/paisa_sub_title_widget.dart';
 
 class ExpenseIncomeWidget extends StatelessWidget {
   const ExpenseIncomeWidget({
-    Key? key,
+    super.key,
     required this.nameController,
     required this.descriptionController,
     required this.amountController,
-  }) : super(key: key);
+  });
 
   final TextEditingController nameController;
   final TextEditingController descriptionController;

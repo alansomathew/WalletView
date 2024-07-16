@@ -125,9 +125,9 @@ class UserRepository extends GetxController {
     } on PlatformException catch (e) {
       throw WPlatformException(e.code).message;
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+
+        debugPrint(e.toString());
+      
       throw 'something went wrong. Please try again';
     }
   }
